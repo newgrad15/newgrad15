@@ -2,25 +2,63 @@ body{
   text-align:center;
   background-image: url(./image/background.png);
 }
+.container{
+  width: 1068px;
+  margin: 0 auto;
+}
+.logo{
+  margin: 114px 0 52px;
+}
+.logo img{
+  width: 712px;
+  height: 352px;
+}
 .keiei_rinen{
+  background-image: url(./image/rinen.png);
   border:solid 1px;
-  width:400px;
-  margin:auto;
+  width:865px;
+  height: 310px;
+  margin: 0 auto 80px;
+  text-indent: -9999px;
 }
 .jigyoubu_list{
   display:inline-block;
-  border:solid 1px;
-  margin:10px;
-  padding:10px;
-  text-align:left;
+  /*border:solid 1px;*/
+  /*margin:10px;*/
+  /*padding:10px;*/
+  /*text-align:left;*/
+  width: 270px;
+  height: 241px;
+  /*float: left;*/
+  margin: 12px;
+  cursor: pointer;
+}
+.jigyoubu_list.herunia{
+  background-image: url(./image/herunia_jigyoubu_entry.png);
+}
+.jigyoubu_list.herunia:hover{
+  background-image: url(./image/herunia_jigyoubu_entry_hover.png);
+}
+.jigyoubu_list.nijigen_ijyuu{
+  background-image: url(./image/nijigen_ijyuu_jigyoubu_entry.png);
+}
+.jigyoubu_list.nijigen_ijyuu:hover{
+  background-image: url(./image/nijigen_ijyuu_jigyoubu_entry_hover.png);
+}
+.jigyoubu_list.sekaino_kotowari{
+  background-image: url(./image/sekaino_kotowari_jigyoubu_entry.png);
+}
+.jigyoubu_list.sekaino_kotowari:hover{
+  background-image: url(./image/sekaino_kotowari_jigyoubu_entry_hover.png);
 }
 .jigyoubu_list_container{
-}
-.jigyoubu_content{
-  text-align:left;
 }
 .jigyoubu_content_container{
   width:712px;
   border:solid 1px;
   margin:auto;
+  clear: both;
+}
+.jigyoubu_content{
+  text-align:left;
 }
