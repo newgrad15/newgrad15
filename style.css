@@ -1,0 +1,26 @@
+body{
+  text-align:center;
+  background-image: url(./image/background.png);
+}
+.keiei_rinen{
+  border:solid 1px;
+  width:400px;
+  margin:auto;
+}
+.jigyoubu_list{
+  display:inline-block;
+  border:solid 1px;
+  margin:10px;
+  padding:10px;
+  text-align:left;
+}
+.jigyoubu_list_container{
+}
+.jigyoubu_content{
+  text-align:left;
+}
+.jigyoubu_content_container{
+  width:712px;
+  border:solid 1px;
+  margin:auto;
+}
