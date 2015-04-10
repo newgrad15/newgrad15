@@ -16,8 +16,9 @@ body{
   margin: 114px 0 52px;
 }
 .logo img{
-  width: 712px;
-  height: 352px;
+  /*width: 712px;*/
+  /*height: 352px;*/
+  width: 823px;
 }
 .keiei_rinen{
   background-image: url(./image/rinen.png);
