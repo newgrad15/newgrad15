@@ -1,3 +1,9 @@
+*{
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body{
   text-align:center;
   background-image: url(./image/background.png);
@@ -19,7 +25,24 @@ body{
   width:865px;
   height: 310px;
   margin: 0 auto 80px;
-  text-indent: -9999px;
+  /*text-indent: -9999px;*/
+  padding: 20px;
+}
+.rinen_main{
+  font-family: "ヒラギノ角ゴ Std", "ヒラギノ角ゴ ProN", "メイリオ", Arial, sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  margin: 10px;
+}
+.rinen_text{
+  font-family: "ヒラギノ角ゴ ProN", "ヒラギノ角ゴ Std", "メイリオ", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 25px;
+}
+.itai{
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 45px;
 }
 .jigyoubu_list{
   display:inline-block;
