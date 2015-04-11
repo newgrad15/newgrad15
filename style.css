@@ -16,8 +16,6 @@ body{
   margin: 114px 0 52px;
 }
 .logo img{
-  /*width: 712px;*/
-  /*height: 352px;*/
   width: 823px;
 }
 .keiei_rinen{
@@ -26,7 +24,6 @@ body{
   width:865px;
   height: 310px;
   margin: 0 auto 80px;
-  /*text-indent: -9999px;*/
   padding: 20px;
 }
 .rinen_main{
@@ -47,13 +44,8 @@ body{
 }
 .jigyoubu_list{
   display:inline-block;
-  /*border:solid 1px;*/
-  /*margin:10px;*/
-  /*padding:10px;*/
-  /*text-align:left;*/
   width: 270px;
   height: 241px;
-  /*float: left;*/
   margin: 12px;
   cursor: pointer;
 }
@@ -78,11 +70,32 @@ body{
 .jigyoubu_list_container{
 }
 .jigyoubu_content_container{
-  width:712px;
-  border:solid 1px;
+  width:860px;
+  height:400px;
   margin:auto;
   clear: both;
+  text-align:center;
+  position:relative;  
 }
-.jigyoubu_content{
+.jigyoubu_content.herunia{
+  font-size:20pt;
   text-align:left;
+  position:absolute;
+  display:none;
+  background-color:white;  
+}
+.jigyoubu_content.nijigen_ijyuu{
+  font-size:20pt;
+  text-align:left;
+  position:absolute;
+  display:none;
+  background-color:white;  
+}
+.jigyoubu_content.sekaino_kotowari{
+  font-size:20pt;
+  height:1000px;
+  text-align:left;
+  position:absolute;
+  display:none;
+  background-color:white;  
 }
