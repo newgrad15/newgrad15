@@ -79,6 +79,7 @@ body{
 }
 .jigyoubu_content.herunia{
   font-size:20pt;
+  height:2000px;
   text-align:left;
   position:absolute;
   display:none;
@@ -86,6 +87,7 @@ body{
 }
 .jigyoubu_content.nijigen_ijyuu{
   font-size:20pt;
+  height:2000px;
   text-align:left;
   position:absolute;
   display:none;
@@ -93,7 +95,7 @@ body{
 }
 .jigyoubu_content.sekaino_kotowari{
   font-size:20pt;
-  height:1000px;
+  height:2000px;
   text-align:left;
   position:absolute;
   display:none;
