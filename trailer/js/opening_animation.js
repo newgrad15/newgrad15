@@ -90,7 +90,7 @@ OpeningAnimation = function( id ){
 	    }
 	    nextFrame = frame + 1
 	    nextTime = time + 1
-	    setTimeout( function(){ that.Loop( nextFrame, nextTime ) }, 200 );
+	    setTimeout( function(){ that.Loop( nextFrame, nextTime ) }, 100 );
 	}
 	if( ch == "" ){
 	    return that.Loop2( 0, 0 );
@@ -113,7 +113,8 @@ OpeningAnimation = function( id ){
 	this.c.Draw()
 	this.d.Draw()
 	this.e.Draw()
-	setTimeout( function(){ that.Loop2( frame+1, 0 ) }, 20 );	
+	if(frame < 500)
+	    setTimeout( function(){ that.Loop2( frame+1, 0 ) }, 20 );
     }
 
     this.Reset( id )
