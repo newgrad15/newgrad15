@@ -1,4 +1,4 @@
-var OpeningAnimation = function( id ){
+OpeningAnimation = function( id ){
     this.Reset = function( id ){
 	this.element = document.getElementById( id );
 	this.ctx = this.element.getContext( '2d' );
@@ -9,7 +9,7 @@ var OpeningAnimation = function( id ){
 	
 	this.fontSize = this.GetFontSize();
 	this.scale = 1.0
-
+	
 	this.string  = "\nカヤック15年新卒20名は・・・\n\n"
 	this.string += "数年前この20名で起業をし、\n\n"
 	this.string += "会社経営をしていた\n\n"
@@ -17,7 +17,7 @@ var OpeningAnimation = function( id ){
 	this.string += "だが、社内である事件が起こり\n\n"
 	this.string += "会社を倒産させてしまった\n\n"
 	this.string += "\n\n\n"
-	this.string += "そこで、何がおきたのか・・・\n"
+	this.string += "そこで、何がおきたのか・・・　　　　　　　　　　\n"
 	
 	this.draw_x = this.GetInitDrawX();
 	this.draw_y = this.GetInitDrawY();
@@ -66,10 +66,6 @@ var OpeningAnimation = function( id ){
     
     this.Loop = function( frame, time ){
 	var that = this;
-
-//	that.ctx.shadowBlur = 1000;
-//	that.ctx.shadowColor = "blue";
-	
 	that.ctx.font = "bold #fontSizepx 'メイリオ'".replace("#fontSize",that.fontSize);
 	
 	var ch = ""
@@ -96,7 +92,65 @@ var OpeningAnimation = function( id ){
 	    nextTime = time + 1
 	    setTimeout( function(){ that.Loop( nextFrame, nextTime ) }, 200 );
 	}
+	if( ch == "" ){
+	    return that.Loop2( 0, 0 );
+	}
+	    
+    }
+    this.Loop2 = function( frame, time ){
+	if( frame == 0 ){
+	    this.a = new StringObject(this.ctx, "４", 400 , 200, 100 ) 
+	    this.b = new StringObject(this.ctx, "月", 500 , 200, 100 ) 
+	    this.c = new StringObject(this.ctx, "１", 600 , 200, 100 )
+	    this.d = new StringObject(this.ctx, "７", 700 , 200, 100 ) 	    
+	    this.e = new StringObject(this.ctx, "日", 800 , 200, 100 )
+	}
+	var that = this;
+	this.ClearCanvas();
+	this.f = new StringObject(this.ctx, "すべての真相は、", 200 , 200, 100 )
+	this.a.Draw()
+	this.b.Draw()
+	this.c.Draw()
+	this.d.Draw()
+	this.e.Draw()
+	setTimeout( function(){ that.Loop2( frame+1, 0 ) }, 20 );	
     }
 
     this.Reset( id )
+}
+
+
+StringObject = function( ctx, text, x, y, fontSize ){
+    this.Reset = function( ctx,text, x, y, fontSize ){
+	this.text = text;
+	this.animationFlag = true;
+	this.screen_x = x
+	this.screen_y = y
+	this.frame = 0
+	this.ctx = ctx
+	this.initFontSize = 3000;
+	this.fontSize = 100;
+	this.drawFrag = false
+    }
+    this.Draw = function( ){
+	draw_x = this.screen_x;
+	draw_y = this.screen_y;
+	this.frame += 1;
+
+	var process = this.frame * 2;
+	fontSize = this.CalcSize( process );
+	this.ctx.fillStyle = "white";
+	this.ctx.font = "bold #fontSizepx 'arial'".replace( "#fontSize", fontSize );
+	for( var i = 0; i < this.text.length; i++ ){
+	    this.ctx.fillText( this.text[ i ], draw_x, draw_y );
+	    draw_x += this.fontSize;
+	}
+    }
+    this.CalcSize = function( process ){
+	if( process >= 100 ) process = 100;
+	var theta = Math.PI * process * 1.0 / 100;
+	var value = ( 1 + Math.cos( theta ) ) * 1.0 / 2 * ( this.initFontSize - this.fontSize ) + this.fontSize;
+	return value;
+    }
+    this.Reset( ctx, text, x, y, fontSize )
 }
