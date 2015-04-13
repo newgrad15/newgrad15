@@ -10,8 +10,8 @@ OpeningAnimation = function( id ){
 	this.fontSize = this.GetFontSize();
 	this.scale = 1.0
 	
-	this.string  = "\nカヤック15年新卒20名は・・・\n\n"
-	this.string += "数年前この20名で起業をし、\n\n"
+	this.string  = "\nカヤック１５年新卒２０名は・・・\n\n"
+	this.string += "数年前この２０名で起業をし、\n\n"
 	this.string += "会社経営をしていた\n\n"
 	this.string += "\n\n"
 	this.string += "だが、社内である事件が起こり\n\n"
