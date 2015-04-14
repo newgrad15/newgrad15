@@ -4,7 +4,7 @@ OpeningAnimation = function( id, callBack ){
 	this.ctx = this.element.getContext( '2d' );
 	this.xCharNum = 16 + 2;
 	this.yCharNum = 16 + 2;
-	this.stringImageNum = 75;
+	this.stringImageNum = 74;
 
 	this.loadImageStartNum = 0;
 	this.loadImageEndNum = 0;
@@ -50,18 +50,12 @@ OpeningAnimation = function( id, callBack ){
     }
     this.ClearCanvas = function( color ){
 	this.ctx.fillStyle = color;
-	var w = this.element.width;
-	var h = this.element.height;
-
 	this.ctx.clearRect( 0, 0, this.element.width, this.element.height );
-//	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );
 	this.imagePos = 0
 	var frame = this.stringPos
 	this.stringPos = 0
-	console.log( frame )	
 	for( i = 0; i < frame; i++ ){
 	    this.DrawImage( i );
-	    console.log("hekkooo")
 	}
     }
     
@@ -114,13 +108,6 @@ OpeningAnimation = function( id, callBack ){
 	var loadNum = 0;
 	var that = this
 
-//	that.loadImageStartNum += 1;
-//	that.backImage = new Image();
-//	that.backImage.src = "image/back.png";
-//	that.backImage.onload = function(){
-//	    that.loadImageEndNum += 1
-//	}
-	
 	for( i = 0; i < this.stringImageNum; i++ ){
 	    that.loadImageStartNum += 1
 	    var image = new Image();
