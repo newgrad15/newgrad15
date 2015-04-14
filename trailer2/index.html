@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>スタスタキナコトモフモフホナミニハアトシヨ！</title>
+  <link rel="stylesheet" href="./font.css">
   <link rel="stylesheet" href="./style.css">
   <script type="text/javascript" src="js/time_counter.js"></script>
   <script type="text/javascript" src="js/opening_animation.js"></script>
@@ -10,24 +11,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script>
     $(function(){
-        $("#canvas").hide();
-        
-        fadeImage();
+      pageOnLoad();
     });
+    function pageOnLoad(){
+      $("#canvas").fadeOut();
+      $("#container").fadeIn();
+      fadeImage();
+    }
     var fadeTime=2000,
         fadeSpan=5000,
         n=0;
     function fadeImage(){
-        img = $("#main img");
-        len = $(img).length;
-        
-        $(img).eq(n).fadeIn(fadeTime);
-        $(img).not(":eq("+n+")").fadeOut(fadeTime);
-        
-        if(n < len){ n++; }
-        else{ n=0; }
-        
-        setTimeout(fadeImage, fadeSpan);
+      img = $("#main img");
+      len = $(img).length;
+      
+      $(img).eq(n).fadeIn(fadeTime);
+      $(img).not(":eq("+n+")").fadeOut(fadeTime);
+      
+      if(n < len){ n++; }
+      else{ n=0; }
+      
+      setTimeout(fadeImage, fadeSpan);
     }
   </script>
 </head>

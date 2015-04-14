@@ -15,6 +15,7 @@ body{
   margin: 0 auto;
   position: relative;
   text-align: center;
+  display: none;
 }
 div#main{
   width: 800px;
@@ -36,4 +37,6 @@ div#main img{
   text-align: center;
   font-size: 40px;
 }
-
+#time_counter{
+  font-family: 'digital_dreamregular', 'digital_dream_fatregular', 'digital_dream_fat_narrowRg', 'digital_dream_fat_skewregular', 'digital_dream_fat_skew_narrRg', 'digital_dream_narrowregular', 'digital_dream_skewregular', 'digital_dream_skew_narrowRg', 'radiolandregular', 'radioland_slimregular', "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
+}
