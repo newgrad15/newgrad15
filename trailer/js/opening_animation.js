@@ -18,6 +18,7 @@ OpeningAnimation = function( id, callBack ){
 	this.string += "会社を倒産させてしまった\n\n"
 	this.string += "\n\n\n"
 	this.string += "そこで、何がおきたのか・・・　　　　　　　　　　\n"
+	this.string += "\n\n\n\n\n\n\n\n\n"
 	this.stringPos = 0
 	this.imageAry = []
 	this.LoadImage()
