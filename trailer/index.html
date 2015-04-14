@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script>
     function pageOnLoad(){
-      $("#canvas").fadeOut();
+      $("#canvas_container").fadeOut();
       $("#container").fadeIn();
       fadeImage();
     }
@@ -32,8 +32,10 @@
     }
   </script>
 </head>
-<body style="background-image: url('image/back.png');background-size:100% 100%;height:100%;width:100%">
-  <canvas id="canvas"></canvas>
+<body>
+  <div id="canvas_container" style="background-image: url('image/back.png');background-size:100% 100%;height:100%;width:100%">
+    <canvas id="canvas"></canvas>
+  </div>
   <div id="container">
     <div id="main">
         <img src="./image/in1.jpg" />
