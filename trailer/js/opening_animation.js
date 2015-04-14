@@ -160,7 +160,7 @@ OpeningAnimation = function( id, callBack ){
 	setTimeout( function(){ that.LoadImageCheck() }, 200 );	
     }
     this.EndProcess = function(){
-	console.log("hello world")
+	var that = this
 	setTimeout( function(){ that.callBack() }, 1000 );	
     }
     
