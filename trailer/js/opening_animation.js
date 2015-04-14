@@ -61,7 +61,7 @@ OpeningAnimation = function( id, callBack ){
 	this.ctx.fillStyle = grad5;
 	this.ctx.fill();
 	this.ctx.fillRect( 0, 0, this.element.width, this.element.height );
-	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );
+//	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );
 
 	this.imagePos = 0
 
@@ -123,12 +123,12 @@ OpeningAnimation = function( id, callBack ){
 	var loadNum = 0;
 	var that = this
 
-	that.loadImageStartNum += 1;
-	that.backImage = new Image();
-	that.backImage.src = "image/back.png";
-	that.backImage.onload = function(){
-	    that.loadImageEndNum += 1
-	}
+//	that.loadImageStartNum += 1;
+//	that.backImage = new Image();
+//	that.backImage.src = "image/back.png";
+//	that.backImage.onload = function(){
+//	    that.loadImageEndNum += 1
+//	}
 	
 	for( i = 0; i < this.stringImageNum; i++ ){
 	    that.loadImageStartNum += 1
