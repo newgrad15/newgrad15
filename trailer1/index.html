@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>スタスタキナコトモフモフホナミニハアトシヨ！</title>
-  <script type="text/javascript" src="js/time_counter.js"></script>
-  <script type="text/javascript" src="js/opening_animation.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>  
+  <script type="text/javascript" src="js/bgm_sound.js"></script>
+  <script type="text/javascript">
+    var bgmSound
+    window.onload = function(){
+    bgmSound = new BgmSound( "sound" );
+    }
+  </script>
+  
 </head>
 <body style="margin:0px;padding:0px">
-  <canvas id="canvas"></canvas>
-  <canvas id="time_counter" style="display:none"></canvas>
+  <audio src="kowai_bgm.m4a" id="sound" loop>
+    <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
+  </audio>
+  <div onclick="bgmSound.Toggle()">トグル</div>  
 </body>
 </html>
 
