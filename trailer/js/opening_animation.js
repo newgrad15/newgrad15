@@ -4,14 +4,12 @@ OpeningAnimation = function( id ){
 	this.ctx = this.element.getContext( '2d' );
 	this.xCharNum = 16 + 2;
 	this.yCharNum = 16 + 2;
-	this.OnResize();
+	this.stringImageNum = 75;
 
-
-	this.loadNum = 0
-
+	this.loadImageStartNum = 0;
+	this.loadImageEndNum = 0;
 	
-	this.fontSize = this.GetFontSize();
-	
+	this.imagePos = 0
 	this.string  = "\nカヤック１年新卒２名は・・・\n\n"
 	this.string += "数年前この２名で起業をし、\n\n"
 	this.string += "会社経営をしていた\n\n"
@@ -20,45 +18,41 @@ OpeningAnimation = function( id ){
 	this.string += "会社を倒産させてしまった\n\n"
 	this.string += "\n\n\n"
 	this.string += "そこで、何がおきたのか・・・　　　　　　　　　　\n"
-
+	this.stringPos = 0
 	this.imageAry = []
-	
-	this.draw_x = this.GetInitDrawX();
-	this.draw_y = this.GetInitDrawY();
-
-	this.backImage = new Image()
-	this.backImage.src = "image/back.png"
-	var that = this
-	this.backImage.onload = function(){
-	    that.LoadImage(75)
-	    that.ClearCanvas("black");
-	}
+	this.LoadImage()
     }
     this.GetFontSize = function(){
 	x_fontSize = Math.floor( ( this.element.height ) / ( this.xCharNum ) );
 	y_fontSize = Math.floor( ( this.element.width  ) / ( this.yCharNum ) );
 	if( x_fontSize < y_fontSize ){
-	    console.log("x")
 	    return x_fontSize;
 	}else{
-	    console.log("y")
 	    return y_fontSize;
 	}
     }
     this.GetInitDrawX = function(){
-	console.log( this.fontSize * this.xCharNum )
 	var i = this.element.width - ( this.element.width - ( this.fontSize * this.xCharNum  ) ) / 2  - this.fontSize;
-	console.log(i)
 	return i
     }
     this.GetInitDrawY = function(){
 	return ( this.element.height - this.yCharNum * this.fontSize ) / 2 + this.fontSize * 2;
     }
     this.OnResize = function(){
-	this.element.width  =  window.innerWidth;
+	this.element.width  = window.innerWidth;
 	this.element.height = window.innerHeight;
+	this.fontSize = this.GetFontSize();
+	this.draw_x = this.GetInitDrawX();
+	this.draw_y = this.GetInitDrawY();
+	this.ClearCanvas("black");
+
+	this.ReDraw();
     }
 
+    this.ReDraw = function(){
+	
+    }
+    
     this.ClearCanvas = function( color ){
 	this.ctx.fillStyle = color;
 	var w = this.element.width;
@@ -72,53 +66,107 @@ OpeningAnimation = function( id ){
 	this.ctx.fillStyle = grad5;
 	this.ctx.fill();
 	this.ctx.fillRect( 0, 0, this.element.width, this.element.height );
-	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );	
+	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );
+
+	this.imagePos = 0
+	console.log( this.stringPos )
+	var frame = this.stringPos
+	this.stringPos = 0
+	
+	for( i = 0; i > frame; i++ ){
+	    this.DrawImage( i );
+	    console.log("hekkooo")
+	}
     }
     
-    this.Loop = function( frame, time ){
+    this.Loop = function(){
 	var that = this;
-	
-	var ch = ""
-	if( frame < that.string.length ){
-	    ch = that.string[ frame ]
+	var endLoopCheck = function(){
+	    return that.imagePos == that.imageAry.length
 	}
+	that.DrawImage();
+	if( endLoopCheck() ){
+	    return that.EndProcess()
+	}
+	setTimeout( function(){ that.Loop() }, 100 );
+    }
 
-	if( time == that.imageAry.length ){
-	    return console.log("next");
-	}
-	
-	if( ch != "\n" ){
-	    that.ctx.drawImage( that.imageAry[ time++ ], that.draw_x, that.draw_y, that.fontSize, that.fontSize );
-	    that.draw_y += that.fontSize;
-	}else{
+    this.DrawImage = function(){
+	var that = this
+	var imagePos = this.imagePos
+	var newLine = function(){
 	    that.draw_x -= that.fontSize;
 	    that.draw_y = that.GetInitDrawY();
 	}
-	setTimeout( function(){ that.Loop( frame + 1, time ) }, 100 );
-    }    
+	var drawImage = function(){
+	    that.ctx.drawImage(
+		that.imageAry[ imagePos ].image,
+		that.draw_x,
+		that.draw_y,
+		that.fontSize,
+		that.fontSize
+	    );
+	    that.draw_y += that.fontSize;
+	}
+
+	var ch = ""
+	if( that.stringPos < that.string.length ){
+	    ch = that.string[ that.stringPos++ ]
+	}
+	if( ch == "\n" ){
+	    newLine()
+	}
+	if( ch != "\n" ){
+	    drawImage()
+	    this.imagePos++
+	}
+
+    }
+    
     this.LoadImage = function( imageNum ){
 	var imageAry = [];
 	var loadNum = 0;
 	var that = this
-	
-	for( i = 0; i < imageNum; i++ ){
-	    var src = "image/" + ( "00" + ( i + 1 ) ).slice( -2 ) + ".png"
-	    var image = new Image();
-	    image.src = src;
-	    image.onload = function(){ that.loadNum += 1 }
-	    this.imageAry.push( image );
+
+	that.loadImageStartNum += 1;
+	that.backImage = new Image();
+	that.backImage.src = "image/back.png";
+	that.backImage.onload = function(){
+	    that.loadImageEndNum += 1
 	}
+	
+	for( i = 0; i < this.stringImageNum; i++ ){
+	    that.loadImageStartNum += 1
+	    var image = new Image();
+	    var src = "image/" + ( "00" + ( i + 1 ) ).slice( -2 ) + ".png"
+	    image.src = src;
+	    image.onload = function(){
+		that.loadImageEndNum += 1
+
+	    }
+	    that.imageAry.push(
+		{
+		    image:image,
+		    drawFlag:true,
+		}
+	    )
+	    
+	}
+	
 	this.LoadImageCheck();
     }
     this.LoadImageCheck = function(){
 	var that = this
-	if( that.loadNum == this.imageAry.length ){
+	console.log( that.loadImageStartNum, that.loadImageEndNum )
+	if( that.loadImageEndNum == that.loadImageStartNum ){
+	    that.OnResize();
 	    return this.Loop( 0, 0 )
 	}
-	setTimeout( function(){ that.LoadImageCheck() }, 100 );	
+	setTimeout( function(){ that.LoadImageCheck() }, 200 );	
+    }
+    this.EndProcess = function(){
+	console.log("hello world")
     }
     
     this.Reset( id )
 }
-
-
