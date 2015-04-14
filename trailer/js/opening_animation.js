@@ -53,18 +53,9 @@ OpeningAnimation = function( id, callBack ){
 	var w = this.element.width;
 	var h = this.element.height;
 
-	var grad5 = this.ctx.createRadialGradient( w/2, h/2, w/6, w/2, h/2, w/2 );
-	grad5.addColorStop(0,'#000000');
-	grad5.addColorStop(1.0,'#222222');
-
-	this.ctx.beginPath();
-	this.ctx.fillStyle = grad5;
-	this.ctx.fill();
-	this.ctx.fillRect( 0, 0, this.element.width, this.element.height );
+	this.ctx.clearRect( 0, 0, this.element.width, this.element.height );
 //	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );
-
 	this.imagePos = 0
-
 	var frame = this.stringPos
 	this.stringPos = 0
 	console.log( frame )	
