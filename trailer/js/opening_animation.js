@@ -69,11 +69,11 @@ OpeningAnimation = function( id ){
 	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );
 
 	this.imagePos = 0
-	console.log( this.stringPos )
+
 	var frame = this.stringPos
 	this.stringPos = 0
-	
-	for( i = 0; i > frame; i++ ){
+	console.log( frame )	
+	for( i = 0; i < frame; i++ ){
 	    this.DrawImage( i );
 	    console.log("hekkooo")
 	}
