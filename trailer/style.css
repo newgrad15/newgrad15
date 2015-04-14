@@ -10,7 +10,7 @@ body{
   /*font-family: "ヒラギノ明朝 Pro",  "メイリオ", Arial, sans-serif;*/
   font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
 }
-.container{
+#container{
   /*width: 1068px;*/
   margin: 0 auto;
   position: relative;
