@@ -161,7 +161,7 @@ OpeningAnimation = function( id, callBack ){
     }
     this.EndProcess = function(){
 	console.log("hello world")
-	this.callBack()
+	setTimeout( function(){ that.callBack() }, 1000 );	
     }
     
     this.Reset( id, callBack )
