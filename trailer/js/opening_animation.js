@@ -1,5 +1,5 @@
-OpeningAnimation = function( id ){
-    this.Reset = function( id ){
+OpeningAnimation = function( id, callBack ){
+    this.Reset = function( id, callBack ){
 	this.element = document.getElementById( id );
 	this.ctx = this.element.getContext( '2d' );
 	this.xCharNum = 16 + 2;
@@ -21,6 +21,7 @@ OpeningAnimation = function( id ){
 	this.stringPos = 0
 	this.imageAry = []
 	this.LoadImage()
+	this.callBack = callBack
     }
     this.GetFontSize = function(){
 	x_fontSize = Math.floor( ( this.element.height ) / ( this.xCharNum ) );
@@ -45,14 +46,7 @@ OpeningAnimation = function( id ){
 	this.draw_x = this.GetInitDrawX();
 	this.draw_y = this.GetInitDrawY();
 	this.ClearCanvas("black");
-
-	this.ReDraw();
     }
-
-    this.ReDraw = function(){
-	
-    }
-    
     this.ClearCanvas = function( color ){
 	this.ctx.fillStyle = color;
 	var w = this.element.width;
@@ -166,7 +160,8 @@ OpeningAnimation = function( id ){
     }
     this.EndProcess = function(){
 	console.log("hello world")
+	this.callBack()
     }
     
-    this.Reset( id )
+    this.Reset( id, callBack )
 }
