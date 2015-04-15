@@ -54,7 +54,7 @@ OpeningAnimation = function( id, callBack ){
 	this.imagePos = 0
 	var frame = this.stringPos
 	this.stringPos = 0
-	this.innerHTML = ""
+	this.element.innerHTML = ""
 	for( i = 0; i < frame; i++ ){
 	    this.DrawImage( i );
 	}
