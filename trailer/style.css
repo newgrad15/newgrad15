@@ -9,6 +9,7 @@ body{
   background-color: black;
   /*font-family: "ヒラギノ明朝 Pro",  "メイリオ", Arial, sans-serif;*/
   font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
+  background-image:url('./image/back.png');background-size:cover;
 }
 .container{
   /*width: 1068px;*/
@@ -41,6 +42,5 @@ div#main img{
   font-family: 'digital_dreamregular', 'digital_dream_fatregular', 'digital_dream_fat_narrowRg', 'digital_dream_fat_skewregular', 'digital_dream_fat_skew_narrRg', 'digital_dream_narrowregular', 'digital_dream_skewregular', 'digital_dream_skew_narrowRg', 'radiolandregular', 'radioland_slimregular', "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
 }
 #opening_animation{
-  background-image: url('image/back.png');
-  background-size:100% 100%;
 }
+ 
