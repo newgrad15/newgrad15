@@ -2,7 +2,7 @@ OpeningAnimation = function( id, callBack ){
     this.Reset = function( id, callBack ){
 	this.element = document.getElementById( id );
 	this.element = document.getElementById( "opening_animation")
-	this.xCharNum = 19 + 2;
+	this.xCharNum = 20 + 2;
 	this.yCharNum = 16 + 2;
 	this.stringImageNum = 74;
 
@@ -22,13 +22,12 @@ OpeningAnimation = function( id, callBack ){
 	this.string += "いったい何がおきたのか・・・\n"
 	this.string += "\n\n"
 	this.stringPos = 0
-	this.imageAry = []
 	this.LoadImage()
 	this.callBack = callBack
     }
     this.GetFontSize = function(){
-	x_fontSize = Math.floor( ( this.height ) / ( this.xCharNum ) );
-	y_fontSize = Math.floor( ( this.width  ) / ( this.yCharNum ) );
+	x_fontSize = Math.floor( ( this.width ) / ( this.xCharNum ) );
+	y_fontSize = Math.floor( ( this.height  ) / ( this.yCharNum ) );
 	if( x_fontSize < y_fontSize ){
 	    return x_fontSize;
 	}else{
@@ -48,22 +47,40 @@ OpeningAnimation = function( id, callBack ){
 	this.fontSize = this.GetFontSize();
 	this.draw_x = this.GetInitDrawX();
 	this.draw_y = this.GetInitDrawY();
-	this.ClearCanvas("black");
+	this.InsertHTML();
+
+	for( i = 0; i < this.stringImageNum; i++ ){
+	    this.element.childNodes[ i ].style.width = "" + this.fontSize + "px";
+	    this.element.childNodes[ i ].style.height = "" + this.fontSize + "px";	    
+	}
+	this.ClearCanvas()
     }
-    this.ClearCanvas = function( color ){
+    
+    this.ClearCanvas = function(){
 	this.imagePos = 0
 	var frame = this.stringPos
 	this.stringPos = 0
-	this.element.innerHTML = ""
 	for( i = 0; i < frame; i++ ){
-	    this.DrawImage( i );
+	    this.DrawImage();
 	}
     }
+
+    this.InsertHTML = function(){
+	html = "";
+	for( i = 0; i < this.stringImageNum; i++ ){
+	    var src = './image/' + ("00" + ( i + 1 ) ).slice( -2 ) + '.png'
+	    var img = '<img src="' + src + '" style="display:none;position:absolute;" alt="string" >'
+	    html += img;
+	}
+	this.element.innerHTML = html
+    }
+
+    
     
     this.Loop = function(){
 	var that = this;
 	var endLoopCheck = function(){
-	    return that.imagePos == that.imageAry.length
+	    return that.imagePos == that.stringImageNum;
 	}
 	that.DrawImage();
 	if( endLoopCheck() ){
@@ -79,19 +96,11 @@ OpeningAnimation = function( id, callBack ){
 	    that.draw_x -= that.fontSize;
 	    that.draw_y = that.GetInitDrawY();
 	}
-	var getSrc = function(){
-	    return "image/"+("00" + (that.imagePos + 1)).slice(-2) + ".png"
-	}
 	var drawImage = function(){
-	    html = "<img src=\"#src\" style=\"position:absolute;top:#toppx;left:#leftpx;width:#wpx;height:#hpx\">"
-	    html = html.replace("#src",getSrc())
-	    html = html.replace("#w",that.fontSize)
-	    html = html.replace("#h",that.fontSize)
-	    html = html.replace("#top",that.draw_y)
-	    html = html.replace("#left",that.draw_x)
-	    console.log(html)
-	    console.log(that.element)
-	    that.element.innerHTML += html
+	    var target = that.element.childNodes[ that.imagePos ]
+	    target.style.display = "block";
+	    target.style.left = "" + that.draw_x + "px";
+	    target.style.top = "" + that.draw_y + "px";
 	    that.draw_y += that.fontSize;
 	}
 
@@ -110,10 +119,12 @@ OpeningAnimation = function( id, callBack ){
     }
     
     this.LoadImage = function( imageNum ){
-	var imageAry = [];
 	var loadNum = 0;
 	var that = this
 
+	that.OnResize();
+	return this.Loop( 0, 0 )
+	
 	for( i = 0; i < this.stringImageNum; i++ ){
 	    that.loadImageStartNum += 1
 	    var image = new Image();
