@@ -16,6 +16,7 @@ body{
 }
 header{
   margin: 40px 0 0 0;
+  position: relative;
   z-index: 10;
 }
 header ul{
@@ -60,7 +61,7 @@ div#bgimg{
   width: 800px;
   height: 578px;
   position: absolute;
-  top: 0;
+  top: -20px;
   left: 100px; /* (container.width - bgimg.width)/2 */
   z-index: 1;
   background-image: url(./image/rouka_1.png);
@@ -74,12 +75,13 @@ div#bgimg{
   z-index: 100;
 }
 .content#top{
-  top: 500px;
+  padding-top: 480px;
 }
 .content h2{
 }
 .content:not(#top){
   padding: 80px 200px;
+  height: 645px; /* .content#topの全体の高さ */
 }
 .content:not(#top) .text{
   text-align: left;
@@ -130,10 +132,13 @@ div#bgimg{
   margin: 0 auto;
 }
 #footer_cast{
-  font-size: 5pt;
+  font-size: 9pt;
+  margin: 10px 0;
+  text-shadow: 1px 1px 2px #ffb700;
 }
 #time_counter{
   margin: 20px 0;
+  font-size: 20pt;
 }
 #link{
   color: red;
@@ -144,4 +149,7 @@ div#bgimg{
 }
 #link a:visited{
   color: red;
+}
+#sns{
+  text-align: center;
 }
