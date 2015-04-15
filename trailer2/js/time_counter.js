@@ -1,7 +1,7 @@
-window.onload = function(){
-//    new TimeCounter( "counter", 2015, 04, 17, 10, 00, 00 );
-    new OpeningAnimation( "canvas" );
-}
+// window.onload = function(){
+// 	new TimeCounter( "counter", 2015, 04, 17, 10, 00, 00 );
+//     new OpeningAnimation( "canvas" );
+// }
 
 TimeCounter = function( id, year, month, date, hours, minutes, seconds ){
     this.Reset = function( id, year, month, date, hours, minutes, seconds ){
