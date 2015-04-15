@@ -2,7 +2,7 @@ OpeningAnimation = function( id, callBack ){
     this.Reset = function( id, callBack ){
 	this.element = document.getElementById( id );
 	this.ctx = this.element.getContext( '2d' );
-	this.xCharNum = 16 + 2;
+	this.xCharNum = 17 + 2;
 	this.yCharNum = 16 + 2;
 	this.stringImageNum = 74;
 
@@ -10,15 +10,17 @@ OpeningAnimation = function( id, callBack ){
 	this.loadImageEndNum = 0;
 	
 	this.imagePos = 0
-	this.string  = "\nカヤック１年新卒２名は・・・\n\n"
-	this.string += "数年前この２名で起業をし、\n\n"
+	this.string  = "\nカヤックX年新卒X名は・・・\n\n"
+	this.string += "数年前このX名で起業をし、\n\n"
 	this.string += "会社経営をしていた\n\n"
 	this.string += "\n\n"
-	this.string += "だが、社内である事件が起こり\n\n"
-	this.string += "会社を倒産させてしまった\n\n"
-	this.string += "\n\n\n"
-	this.string += "そこで、何がおきたのか・・・　　　　　　　　　　\n"
-	this.string += "\n\n\n\n\n\n\n\n\n"
+	this.string += "しかし\n\n"
+	this.string += "社内である事件が起こり\n\n"
+	this.string += "倒産することに\n\n"
+	this.string += "\n\n"	
+	this.string += "彼らの身に\n\n"
+	this.string += "いったい何がおきたのか・・・\n"
+	this.string += "\n\n"
 	this.stringPos = 0
 	this.imageAry = []
 	this.LoadImage()
