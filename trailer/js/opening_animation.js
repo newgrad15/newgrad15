@@ -1,7 +1,7 @@
 OpeningAnimation = function( id, callBack ){
     this.Reset = function( id, callBack ){
 	this.element = document.getElementById( id );
-	this.ctx = this.element.getContext( '2d' );
+	this.element = document.getElementById( "opening_animation")
 	this.xCharNum = 19 + 2;
 	this.yCharNum = 16 + 2;
 	this.stringImageNum = 74;
@@ -27,8 +27,8 @@ OpeningAnimation = function( id, callBack ){
 	this.callBack = callBack
     }
     this.GetFontSize = function(){
-	x_fontSize = Math.floor( ( this.element.height ) / ( this.xCharNum ) );
-	y_fontSize = Math.floor( ( this.element.width  ) / ( this.yCharNum ) );
+	x_fontSize = Math.floor( ( this.height ) / ( this.xCharNum ) );
+	y_fontSize = Math.floor( ( this.width  ) / ( this.yCharNum ) );
 	if( x_fontSize < y_fontSize ){
 	    return x_fontSize;
 	}else{
@@ -36,23 +36,21 @@ OpeningAnimation = function( id, callBack ){
 	}
     }
     this.GetInitDrawX = function(){
-	var i = this.element.width - ( this.element.width - ( this.fontSize * this.xCharNum  ) ) / 2  - this.fontSize;
+	var i = this.width - ( this.width - ( this.fontSize * this.xCharNum  ) ) / 2  - this.fontSize;
 	return i
     }
     this.GetInitDrawY = function(){
-	return ( this.element.height - this.yCharNum * this.fontSize ) / 2 + this.fontSize * 2;
+	return ( this.height - this.yCharNum * this.fontSize ) / 2 + this.fontSize * 2;
     }
     this.OnResize = function(){
-	this.element.width  = window.innerWidth;
-	this.element.height = window.innerHeight;
+	this.width  = window.innerWidth;
+	this.height = window.innerHeight;
 	this.fontSize = this.GetFontSize();
 	this.draw_x = this.GetInitDrawX();
 	this.draw_y = this.GetInitDrawY();
 	this.ClearCanvas("black");
     }
     this.ClearCanvas = function( color ){
-	this.ctx.fillStyle = color;
-	this.ctx.clearRect( 0, 0, this.element.width, this.element.height );
 	this.imagePos = 0
 	var frame = this.stringPos
 	this.stringPos = 0
@@ -80,14 +78,19 @@ OpeningAnimation = function( id, callBack ){
 	    that.draw_x -= that.fontSize;
 	    that.draw_y = that.GetInitDrawY();
 	}
+	var getSrc = function(){
+	    return "image/"+("00" + (that.imagePos + 1)).slice(-2) + ".png"
+	}
 	var drawImage = function(){
-	    that.ctx.drawImage(
-		that.imageAry[ imagePos ].image,
-		that.draw_x,
-		that.draw_y,
-		that.fontSize,
-		that.fontSize
-	    );
+	    html = "<img src=\"#src\" style=\"position:absolute;top:#toppx;left:#leftpx;width:#wpx;height:#hpx\">"
+	    html = html.replace("#src",getSrc())
+	    html = html.replace("#w",that.fontSize)
+	    html = html.replace("#h",that.fontSize)
+	    html = html.replace("#top",that.draw_y)
+	    html = html.replace("#left",that.draw_x)
+	    console.log(html)
+	    console.log(that.element)
+	    that.element.innerHTML += html
 	    that.draw_y += that.fontSize;
 	}
 
