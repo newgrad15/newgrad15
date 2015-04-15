@@ -14,7 +14,7 @@ OpeningAnimation = function( id, callBack ){
 	this.string += "数年前このX名で起業をし、\n\n"
 	this.string += "会社経営をしていた\n\n"
 	this.string += "\n\n"
-	this.string += "しかし\n\n"
+	this.string += "しかし______\n\n"
 	this.string += "社内である事件が起こり\n\n"
 	this.string += "倒産することに\n\n"
 	this.string += "\n\n"	
@@ -22,8 +22,9 @@ OpeningAnimation = function( id, callBack ){
 	this.string += "いったい何がおきたのか・・・\n"
 	this.string += "\n\n"
 	this.stringPos = 0
-	this.LoadImage()
+	this.OnResize();
 	this.callBack = callBack
+	return this.Loop( 0, 0 )	
     }
     this.GetFontSize = function(){
 	x_fontSize = Math.floor( ( this.width ) / ( this.xCharNum ) );
@@ -47,11 +48,17 @@ OpeningAnimation = function( id, callBack ){
 	this.fontSize = this.GetFontSize();
 	this.draw_x = this.GetInitDrawX();
 	this.draw_y = this.GetInitDrawY();
-	this.InsertHTML();
-
+	console.log( this.element )
 	for( i = 0; i < this.stringImageNum; i++ ){
-	    this.element.childNodes[ i ].style.width = "" + this.fontSize + "px";
-	    this.element.childNodes[ i ].style.height = "" + this.fontSize + "px";	    
+
+	    img = $("#main img");
+	    len = $(img).length;
+	    $(img).eq(n).fadeIn(fadeTime);
+	    
+	    var target = this.element.childNodes[ i ]
+	    console.log( this.element.childNodes[ i ] )
+	    target.style.width = "" + this.fontSize + "px";
+	    target.style.height = "" + this.fontSize + "px";	    
 	}
 	this.ClearCanvas()
     }
@@ -65,18 +72,6 @@ OpeningAnimation = function( id, callBack ){
 	}
     }
 
-    this.InsertHTML = function(){
-	html = "";
-	for( i = 0; i < this.stringImageNum; i++ ){
-	    var src = './image/' + ("00" + ( i + 1 ) ).slice( -2 ) + '.png'
-	    var img = '<img src="' + src + '" style="display:none;position:absolute;" alt="string" >'
-	    html += img;
-	}
-	this.element.innerHTML = html
-    }
-
-    
-    
     this.Loop = function(){
 	var that = this;
 	var endLoopCheck = function(){
@@ -111,49 +106,12 @@ OpeningAnimation = function( id, callBack ){
 	if( ch == "\n" ){
 	    newLine()
 	}
-	if( ch != "\n" ){
+	if( ch != "\n" && ch != "_" ){
 	    drawImage()
 	    this.imagePos++
 	}
-
     }
     
-    this.LoadImage = function( imageNum ){
-	var loadNum = 0;
-	var that = this
-
-	that.OnResize();
-	return this.Loop( 0, 0 )
-	
-	for( i = 0; i < this.stringImageNum; i++ ){
-	    that.loadImageStartNum += 1
-	    var image = new Image();
-	    var src = "image/" + ( "00" + ( i + 1 ) ).slice( -2 ) + ".png"
-	    image.src = src;
-	    image.onload = function(){
-		that.loadImageEndNum += 1
-
-	    }
-	    that.imageAry.push(
-		{
-		    image:image,
-		    drawFlag:true,
-		}
-	    )
-	    
-	}
-	
-	this.LoadImageCheck();
-    }
-    this.LoadImageCheck = function(){
-	var that = this
-	console.log( that.loadImageStartNum, that.loadImageEndNum )
-	if( that.loadImageEndNum == that.loadImageStartNum ){
-	    that.OnResize();
-	    return this.Loop( 0, 0 )
-	}
-	setTimeout( function(){ that.LoadImageCheck() }, 100 );	
-    }
     this.EndProcess = function(){
 	var that = this
 	setTimeout( function(){ that.callBack() }, 1000 );	
