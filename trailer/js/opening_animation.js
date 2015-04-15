@@ -137,7 +137,7 @@ OpeningAnimation = function( id, callBack ){
 	    that.OnResize();
 	    return this.Loop( 0, 0 )
 	}
-	setTimeout( function(){ that.LoadImageCheck() }, 200 );	
+	setTimeout( function(){ that.LoadImageCheck() }, 100 );	
     }
     this.EndProcess = function(){
 	var that = this
