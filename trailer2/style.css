@@ -10,33 +10,86 @@ body{
   /*font-family: "ヒラギノ明朝 Pro",  "メイリオ", Arial, sans-serif;*/
   font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
 }
-.container{
+#container{
   /*width: 1068px;*/
   margin: 0 auto;
   position: relative;
-  text-align: center;
+  /*text-align: center;*/
   display: none;
 }
-div#main{
-  width: 800px;
-  height: 553px;
+header ul{
+  margin: 40px 0 0 0;
+  text-align: center;
+  /*width: 860px;*/
+}
+header li{
+  text-indent: -9999px;
+  width: 100px;
+  height: 37px;
+  background-size: contain;
+  list-style-type: none;
+  display: inline-block;
+  margin: 0 50px;
+  cursor: pointer;
+}
+header li.top{
+  background-image: url(./image/top.png);
+}
+header li.story{
+  background-image: url(./image/story.png);
+}
+header li.cast{
+  background-image: url(./image/cast.png);
+}
+header li.theaters{
+  background-image: url(./image/theaters.png);
+}
+header #sound{
+  cursor: pointer;
+}
+div#bgimg{
+  width: 700px;
+  height: 506px;
   /*box-shadow: 0 0 300px 100px white inset;*/
+  /*margin: 0 auto;*/
+  position: absolute;
+  z-index: 1;
+}
+div#bgimg img{
+  display: none;
+  width: 700px;
+  height: 506px;
+  /*position: absolute;*/
+}
+#contents{
+  /*position: absolute;*/
+  /*top: 0;*/
+  z-index: 2;
+}
+.content{
+  /*position: absolute;*/
+}
+#story, #cast, #theaters{
+  display: none;
+}
+#copy{
+  background-image: url(./image/copy.png);
+  background-size: contain;
+  text-indent: -9999px;
+  width: 616px;
+  height: 40px;
   margin: 0 auto;
 }
-div#main img{
-  display: none;
-  width: 800px;
-  height: 553px;
-  position: absolute;
-}
-#text{
+#footer_cast{
+  font-size: 5pt;
 }
 .text{
   color: white;
-  z-index: 1000;
+  /*z-index: 1000;*/
   text-align: center;
-  font-size: 40px;
+  font-size: 18pt;
 }
 #time_counter{
-  font-family: 'digital_dreamregular', 'digital_dream_fatregular', 'digital_dream_fat_narrowRg', 'digital_dream_fat_skewregular', 'digital_dream_fat_skew_narrRg', 'digital_dream_narrowregular', 'digital_dream_skewregular', 'digital_dream_skew_narrowRg', 'radiolandregular', 'radioland_slimregular', "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
+  /*font-family: 'digital_dreamregular', 'digital_dream_fatregular', 'digital_dream_fat_narrowRg', 'digital_dream_fat_skewregular', 'digital_dream_fat_skew_narrRg', 'digital_dream_narrowregular', 'digital_dream_skewregular', 'digital_dream_skew_narrowRg', 'radiolandregular', 'radioland_slimregular', "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;*/
+  margin: 20px 0;
 }

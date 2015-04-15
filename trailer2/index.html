@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>スタスタキナコトモフモフホナミニハアトシヨ！</title>
-  <link rel="stylesheet" href="./font.css">
   <link rel="stylesheet" href="./style.css">
   <script type="text/javascript" src="js/time_counter.js"></script>
   <script type="text/javascript" src="js/opening_animation.js"></script>
@@ -12,7 +11,16 @@
   <script>
     $(function(){
       pageOnLoad();
+      
+      $("li.top").click(function(){ navigation(this); });
+      $("li.story").click(function(){ navigation(this); });
+      $("li.cast").click(function(){ navigation(this); });
+      $("li.theaters").click(function(){ navigation(this); });
     });
+    function navigation(obj){
+      $("#contents div.content").fadeOut();
+      $("#"+$(obj).attr("class")).fadeIn();
+    }
     function pageOnLoad(){
       $("#canvas").fadeOut();
       $("#container").fadeIn();
@@ -22,7 +30,7 @@
         fadeSpan=5000,
         n=0;
     function fadeImage(){
-      img = $("#main img");
+      img = $("#bgimg img");
       len = $(img).length;
       
       $(img).eq(n).fadeIn(fadeTime);
@@ -38,14 +46,61 @@
 <body>
   <canvas id="canvas"></canvas>
   <div id="container">
-    <div id="main">
-        <img src="./image/in1.jpg" />
-        <img src="./image/in2.jpg" />
-        <img src="./image/in3.jpg" />
+    <header>
+      <ul>
+        <li class="top">top</li>
+        <li class="story">story</li>
+        <li class="cast">cast</li>
+        <li class="theaters">theaters</li>
+      </ul>
+      <div id="sound"></div>
+    </header>
+    <div id="contents">
+      <div id="top" class="content">
+        <p id="copy" class="text">すべての真相は、4月17日に・・・</p>
+        <div id="time_counter" class="text"></div>
+        <p id="footer_cast" class="text">
+          主演: 高橋奈々<br>
+          下田知明 宮原太陽 元木駿 橋本尚樹 荒井光 高須優太 小坂祐貴  森本新之助 深澤匠 星野英里子 丹羽貴紫 中野遥 長島大介 唐翬 藤井厚太朗 木村香月 鈴木寛人 鈴木邦洋 徳田裕介
+        </p>
+      </div>
+      <div id="story" class="content">
+        <h2 class="text">ストーリー</h2>
+        <p class="text">
+          カヤック15年新卒20名はカヤックに入社する以前、<br>
+          20名で会社を立ち上げ、経営をしていた。<br>
+          順調に経営をしていた20名であったが、<br>
+          同時に、ある事件が水面下で起こっていた。<br>
+          その事件をきっかけに、社員が次々と辞表を提出。<br>
+          会社は瞬く間に倒産へと追い込まれていった。<br>
+          謎の多き事件であるが、4月17日に元社員であるカヤック15新卒が<br>
+          今まで、決して語らなかった真実を語る。
+        </p>
+      </div>
+      <div id="cast" class="content">
+        <h2 class="text">キャスト</h2>
+        <dl class="text">
+          <dt>当日ディレクター：</dt><dd>高橋、高須、橋本、鈴木(寛)</dd>
+          <dt>WEBディレクター：</dt><dd>徳田、丹羽</dd>
+          <dt>WEBエンジニア：</dt><dd>藤井、元木、小坂、宮原、下田、荒井、長島</dd>
+          <dt>WEBデザイナー：</dt><dd>中野、木村、星野、唐翬、鈴木(邦)</dd>
+          <dt>撮影、編集：</dt><dd>深澤、森本</dd>
+        </dl>
+      </div>
+      <div id="theaters" class="content">
+        <h2 class="text">シアター</h2>
+        <dl class="text">
+          <dt>会場：</dt><dd>かずさアーク</dd>
+          <dt>日にち：</dt><dd>4月17日(金)</dd>
+          <dt>詳細：</dt><dd>http://sites.google.com/a/kayac.com/201504ginfo/basu-zhu-che-chang-qing_bao</dd>
+        </dl>
+      </div>
     </div>
-    <p id="text" class="text">すべての真相は、4月17日に・・・</p>
-    <div id="time_counter" class="text"></div>
+    <div id="bgimg">
+      <img src="./image/rouka_1.png" />
+      <img src="./image/rouka_2.png" />
+    </div>
+    <div id="sns"></div>
   </div>
 </body>
 </html>
-
