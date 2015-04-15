@@ -2,16 +2,16 @@
 
 window.onload = function(){
   new TimeCounter( "time_counter", 2015, 04, 17, 10, 30, 00 );
-  // openingAnimation = new OpeningAnimation( "canvas" );
+  openingAnimation = new OpeningAnimation( "opening_animation", pageOnLoad );
 }
 window.onresize = function(){
-  // openingAnimation.OnResize()
+  openingAnimation.OnResize()
 }
 
 var bgmSound, soundON=true;
 
 $(function(){
-  pageOnLoad();
+  //pageOnLoad();
   
   $("#sound").click(function(){
     bgmSound.Toggle();
@@ -38,7 +38,7 @@ function navigation(obj){
   });
 }
 function pageOnLoad(){
-  $("#canvas").fadeOut();
+  $("#opening").fadeOut();
   $("#container").fadeIn();
   bgmSound = new BgmSound( "audio" );
   fadeImage();

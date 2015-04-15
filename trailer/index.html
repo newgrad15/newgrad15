@@ -2,41 +2,24 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>スタスタキナコトモフモフホナミニハアトシヨ！</title>
-  <link rel="stylesheet" href="./font.css">
+  <title>15新卒連続中毒事件</title>
   <link rel="stylesheet" href="./style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript" src="js/time_counter.js"></script>
   <script type="text/javascript" src="js/opening_animation.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script>
-    $(document).ready(
-      
-    )
-    
-    function pageOnLoad(){
-      $("#opening").fadeOut();
-      $("#container").fadeIn();
-      fadeImage();
-    }
-    var fadeTime=2000,
-        fadeSpan=5000,
-        n=0;
-    function fadeImage(){
-      img = $("#main img");
-      len = $(img).length;
-      
-      $(img).eq(n).fadeIn(fadeTime);
-      $(img).not(":eq("+n+")").fadeOut(fadeTime);
-      
-      if(n < len ){ n++; }
-      else{ n=0; }
-      
-      setTimeout(fadeImage, fadeSpan);
-    }
-</script>
+  <script type="text/javascript" src="js/bgm_sound.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>  
 </head>
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "http://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  
   <div id="opening">
     <div id="opening_animation">
       <img src="./image/01.png" style="display:none;position:absolute;" alt="string01" >
@@ -115,15 +98,70 @@
       <img src="./image/74.png" style="display:none;position:absolute;" alt="string74" >
     </div>
   </div>
-  <div id="container" style="display:none">
-    <div id="main">
-      <img src="./image/in1.jpg" />
-      <img src="./image/in2.jpg" />
-      <img src="./image/in3.jpg" />
+
+  <div id="container">
+    <header>
+      <ul>
+        <li class="top">top</li>
+        <li class="story">story</li>
+        <li class="cast">cast</li>
+        <li class="theaters">theaters</li>
+      </ul>
+      <div id="sound">
+        <audio src="kowai_bgm.m4a" id="audio" loop>
+          <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
+        </audio>
+      </div>
+    </header>
+    <div id="contents">
+      <div id="top" class="content">
+        <p id="copy" class="text">すべての真相は、4月17日に・・・</p>
+        <div id="time_counter" class="text"></div>
+        <p id="footer_cast" class="text">
+          主演: 高橋奈々<br>
+          下田知明 宮原太陽 元木駿 橋本尚樹 荒井光 高須優太 小坂祐貴  森本新之助 深澤匠 星野英里子 丹羽貴紫 中野遥 長島大介 唐翬 藤井厚太朗 木村香月 鈴木寛人 鈴木邦洋 徳田裕介
+        </p>
+      </div>
+      <div id="story" class="content">
+        <h2 class="text title">ストーリー</h2>
+        <p class="text body">
+          カヤック15年新卒20名はカヤックに入社する以前、
+          20名で会社を立ち上げ、経営をしていた。
+          順調に経営をしていた20名であったが、
+          同時に、ある事件が水面下で起こっていた。
+          その事件をきっかけに、社員が次々と辞表を提出。
+          会社は瞬く間に倒産へと追い込まれていった。
+          謎の多き事件であるが、4月17日に元社員であるカヤック15新卒が
+          今まで、決して語らなかった真実を語る。
+        </p>
+      </div>
+      <div id="cast" class="content">
+        <h2 class="text title">キャスト</h2>
+        <dl class="text body">
+          <dt>当日ディレクター：</dt><dd>高橋、高須、橋本、鈴木(寛)</dd>
+          <dt>WEBディレクター：</dt><dd>徳田、丹羽</dd>
+          <dt>WEBエンジニア：</dt><dd>藤井、元木、小坂、宮原、下田、荒井、長島</dd>
+          <dt>WEBデザイナー：</dt><dd>中野、木村、星野、唐翬、鈴木(邦)</dd>
+          <dt>撮影、編集：</dt><dd>深澤、森本</dd>
+        </dl>
+      </div>
+      <div id="theaters" class="content">
+        <h2 class="text title">シアター</h2>
+        <dl class="text body">
+          <dt>会場：</dt><dd>かずさアーク</dd>
+          <dt>日にち：</dt><dd>4月17日(金)</dd>
+          <dt>詳細：</dt><dd>http://sites.google.com/a/kayac.com/201504ginfo/basu-zhu-che-chang-qing_bao</dd>
+        </dl>
+        <p id="link"><a href="https://sites.google.com/a/kayac.com/201504ginfo/" target="_blank">https://sites.google.com/a/kayac.com/201504ginfo/</a></p>
+      </div>
+      <div id="bgimg"></div>
     </div>
-    <p id="text" class="text">すべての真相は、4月17日に・・・</p>
-    <div id="time_counter" class="text"></div>
+    <div id="sns">
+      <div class="fb-like" data-href="http://newgrad15.github.io/newgrad15/trailer/" data-width="100" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+      
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
   </div>
 </body>
 </html>
-
