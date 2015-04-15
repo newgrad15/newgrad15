@@ -139,6 +139,7 @@ div#bgimg{
 #time_counter{
   margin: 20px 0;
   font-size: 20pt;
+  text-shadow: 2px 4px 1px red;
 }
 #link{
   color: red;
