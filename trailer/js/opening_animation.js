@@ -2,7 +2,7 @@ OpeningAnimation = function( id, callBack ){
     this.Reset = function( id, callBack ){
 	this.element = document.getElementById( id );
 	this.ctx = this.element.getContext( '2d' );
-	this.xCharNum = 17 + 2;
+	this.xCharNum = 18 + 2;
 	this.yCharNum = 16 + 2;
 	this.stringImageNum = 74;
 
