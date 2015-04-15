@@ -4,50 +4,55 @@ OpeningAnimation = function( id ){
 	this.ctx = this.element.getContext( '2d' );
 	this.xCharNum = 16 + 2;
 	this.yCharNum = 16 + 2;
-	this.OnResize();
-	this.ClearCanvas("black");
+	this.stringImageNum = 75;
+
+	this.loadImageStartNum = 0;
+	this.loadImageEndNum = 0;
 	
-	this.fontSize = this.GetFontSize();
-	this.scale = 1.0
-	
-	this.string  = "\nカヤック１５年新卒２０名は・・・\n\n"
-	this.string += "数年前この２０名で起業をし、\n\n"
+	this.imagePos = 0
+	this.string  = "\nカヤック１年新卒２名は・・・\n\n"
+	this.string += "数年前この２名で起業をし、\n\n"
 	this.string += "会社経営をしていた\n\n"
 	this.string += "\n\n"
 	this.string += "だが、社内である事件が起こり\n\n"
 	this.string += "会社を倒産させてしまった\n\n"
 	this.string += "\n\n\n"
 	this.string += "そこで、何がおきたのか・・・　　　　　　　　　　\n"
-	
-	this.draw_x = this.GetInitDrawX();
-	this.draw_y = this.GetInitDrawY();
-	this.Loop( 0, 0 )
+	this.stringPos = 0
+	this.imageAry = []
+	this.LoadImage()
     }
     this.GetFontSize = function(){
 	x_fontSize = Math.floor( ( this.element.height ) / ( this.xCharNum ) );
 	y_fontSize = Math.floor( ( this.element.width  ) / ( this.yCharNum ) );
 	if( x_fontSize < y_fontSize ){
-	    console.log("x")
 	    return x_fontSize;
 	}else{
-	    console.log("y")
 	    return y_fontSize;
 	}
     }
     this.GetInitDrawX = function(){
-	console.log( this.fontSize * this.xCharNum )
 	var i = this.element.width - ( this.element.width - ( this.fontSize * this.xCharNum  ) ) / 2  - this.fontSize;
-	console.log(i)
 	return i
     }
     this.GetInitDrawY = function(){
 	return ( this.element.height - this.yCharNum * this.fontSize ) / 2 + this.fontSize * 2;
     }
     this.OnResize = function(){
-	this.element.width  =  window.innerWidth;
+	this.element.width  = window.innerWidth;
 	this.element.height = window.innerHeight;
+	this.fontSize = this.GetFontSize();
+	this.draw_x = this.GetInitDrawX();
+	this.draw_y = this.GetInitDrawY();
+	this.ClearCanvas("black");
+
+	this.ReDraw();
     }
 
+    this.ReDraw = function(){
+	
+    }
+    
     this.ClearCanvas = function( color ){
 	this.ctx.fillStyle = color;
 	var w = this.element.width;
@@ -60,98 +65,108 @@ OpeningAnimation = function( id ){
 	this.ctx.beginPath();
 	this.ctx.fillStyle = grad5;
 	this.ctx.fill();
-
 	this.ctx.fillRect( 0, 0, this.element.width, this.element.height );
+	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );
+
+	this.imagePos = 0
+
+	var frame = this.stringPos
+	this.stringPos = 0
+	console.log( frame )	
+	for( i = 0; i < frame; i++ ){
+	    this.DrawImage( i );
+	    console.log("hekkooo")
+	}
     }
     
-    this.Loop = function( frame, time ){
+    this.Loop = function(){
 	var that = this;
-	that.ctx.font = "bold #fontSizepx 'メイリオ'".replace("#fontSize",that.fontSize);
-	
+	var endLoopCheck = function(){
+	    return that.imagePos == that.imageAry.length
+	}
+	that.DrawImage();
+	if( endLoopCheck() ){
+	    return that.EndProcess()
+	}
+	setTimeout( function(){ that.Loop() }, 100 );
+    }
+
+    this.DrawImage = function(){
+	var that = this
+	var imagePos = this.imagePos
+	var newLine = function(){
+	    that.draw_x -= that.fontSize;
+	    that.draw_y = that.GetInitDrawY();
+	}
+	var drawImage = function(){
+	    that.ctx.drawImage(
+		that.imageAry[ imagePos ].image,
+		that.draw_x,
+		that.draw_y,
+		that.fontSize,
+		that.fontSize
+	    );
+	    that.draw_y += that.fontSize;
+	}
+
 	var ch = ""
-	if( frame < that.string.length ){
-	    ch = that.string[ frame ]
+	if( that.stringPos < that.string.length ){
+	    ch = that.string[ that.stringPos++ ]
+	}
+	if( ch == "\n" ){
+	    newLine()
+	}
+	if( ch != "\n" ){
+	    drawImage()
+	    this.imagePos++
+	}
+
+    }
+    
+    this.LoadImage = function( imageNum ){
+	var imageAry = [];
+	var loadNum = 0;
+	var that = this
+
+	that.loadImageStartNum += 1;
+	that.backImage = new Image();
+	that.backImage.src = "image/back.png";
+	that.backImage.onload = function(){
+	    that.loadImageEndNum += 1
 	}
 	
-	if(ch != ""){
-	    that.ctx.shadowBlur = this.fontSize / 2;
-	    that.ctx.shadowColor = "gray";
-	    that.ctx.fillStyle = "red";
-	    that.ctx.fillText( that.string[ frame ], that.draw_x - 4, that.draw_y );
-	    that.ctx.fillStyle = "cyan";
-	    that.ctx.fillText( that.string[ frame ], that.draw_x + 4, that.draw_y );	
-	    that.ctx.fillStyle = "white";
-	    that.ctx.fillText( that.string[ frame ], that.draw_x, that.draw_y );
-	    
-	    that.draw_y += this.fontSize;
-	    if( ch == "\n" ){
-		that.draw_x -= this.fontSize;
-		that.draw_y = this.GetInitDrawY();
+	for( i = 0; i < this.stringImageNum; i++ ){
+	    that.loadImageStartNum += 1
+	    var image = new Image();
+	    var src = "image/" + ( "00" + ( i + 1 ) ).slice( -2 ) + ".png"
+	    image.src = src;
+	    image.onload = function(){
+		that.loadImageEndNum += 1
+
 	    }
-	    nextFrame = frame + 1
-	    nextTime = time + 1
-	    setTimeout( function(){ that.Loop( nextFrame, nextTime ) }, 100 );
-	}
-	if( ch == "" ){
-	    return that.Loop2( 0, 0 );
-	}
+	    that.imageAry.push(
+		{
+		    image:image,
+		    drawFlag:true,
+		}
+	    )
 	    
-    }
-    this.Loop2 = function( frame, time ){
-	if( frame == 0 ){
-	    this.a = new StringObject(this.ctx, "４", 400 , 200, 100 ) 
-	    this.b = new StringObject(this.ctx, "月", 500 , 200, 100 ) 
-	    this.c = new StringObject(this.ctx, "１", 600 , 200, 100 )
-	    this.d = new StringObject(this.ctx, "７", 700 , 200, 100 ) 	    
-	    this.e = new StringObject(this.ctx, "日", 800 , 200, 100 )
 	}
-	var that = this;
-	this.ClearCanvas();
-	this.f = new StringObject(this.ctx, "すべての真相は、", 200 , 200, 100 )
-	this.a.Draw()
-	this.b.Draw()
-	this.c.Draw()
-	this.d.Draw()
-	this.e.Draw()
-	if(frame < 500)
-	    setTimeout( function(){ that.Loop2( frame+1, 0 ) }, 20 );
+	
+	this.LoadImageCheck();
     }
-
+    this.LoadImageCheck = function(){
+	var that = this
+	console.log( that.loadImageStartNum, that.loadImageEndNum )
+	if( that.loadImageEndNum == that.loadImageStartNum ){
+	    that.OnResize();
+	    return this.Loop( 0, 0 )
+	}
+	setTimeout( function(){ that.LoadImageCheck() }, 200 );	
+    }
+    this.EndProcess = function(){
+	console.log("hello world")
+    }
+    
     this.Reset( id )
-}
-
-
-StringObject = function( ctx, text, x, y, fontSize ){
-    this.Reset = function( ctx,text, x, y, fontSize ){
-	this.text = text;
-	this.animationFlag = true;
-	this.screen_x = x
-	this.screen_y = y
-	this.frame = 0
-	this.ctx = ctx
-	this.initFontSize = 3000;
-	this.fontSize = 100;
-	this.drawFrag = false
-    }
-    this.Draw = function( ){
-	draw_x = this.screen_x;
-	draw_y = this.screen_y;
-	this.frame += 1;
-
-	var process = this.frame * 2;
-	fontSize = this.CalcSize( process );
-	this.ctx.fillStyle = "white";
-	this.ctx.font = "bold #fontSizepx 'arial'".replace( "#fontSize", fontSize );
-	for( var i = 0; i < this.text.length; i++ ){
-	    this.ctx.fillText( this.text[ i ], draw_x, draw_y );
-	    draw_x += this.fontSize;
-	}
-    }
-    this.CalcSize = function( process ){
-	if( process >= 100 ) process = 100;
-	var theta = Math.PI * process * 1.0 / 100;
-	var value = ( 1 + Math.cos( theta ) ) * 1.0 / 2 * ( this.initFontSize - this.fontSize ) + this.fontSize;
-	return value;
-    }
-    this.Reset( ctx, text, x, y, fontSize )
 }

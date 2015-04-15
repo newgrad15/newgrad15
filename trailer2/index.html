@@ -4,14 +4,29 @@
   <meta charset="UTF-8">
   <title>スタスタキナコトモフモフホナミニハアトシヨ！</title>
   <link rel="stylesheet" href="./style.css">
+  <script type="text/javascript" src="js/bgm_sound.js"></script>
   <script type="text/javascript" src="js/time_counter.js"></script>
   <script type="text/javascript" src="js/opening_animation.js"></script>
   <script type="text/javascript" src="js/main.js"></script>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script>
+    var bgmSound;
+    window.onload = function(){
+      bgmSound = new BgmSound( "audio" );
+    };
+    
     $(function(){
       pageOnLoad();
       
+      $("#sound").click(function(){ 
+        bgmSound.Toggle();
+        $(this).toggle(function(){
+          $(this).css("background-image","url(./image/sound_off.png)");
+        },
+        function(){
+          $(this).css("background-image","url(./image/sound_on.png)");
+        });
+      });
       $("li.top").click(function(){ navigation(this); });
       $("li.story").click(function(){ navigation(this); });
       $("li.cast").click(function(){ navigation(this); });
@@ -67,8 +82,8 @@
         <li class="cast">cast</li>
         <li class="theaters">theaters</li>
       </ul>
-      <div id="sound" onclick="bgmSound.Toggle()">
-        <audio src="kowai_bgm.m4a" id="sound" loop>
+      <div id="sound">
+        <audio src="kowai_bgm.m4a" id="audio" loop>
           <p>音声を再生するには、audioタグをサポートしたブラウザが必要です。</p>
         </audio>
       </div>
