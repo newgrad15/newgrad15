@@ -8,8 +8,14 @@ body{
   background-color: black;
   font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
 }
+@media screen and (max-width: 640px) {
+  #container {
+    max-width: 640px;
+    width: 100%;
+  }
+}
 #container{
-  width: 1000px;
+  width: 950px;
   margin: 0 auto;
   position: relative;
   display: none;
@@ -62,7 +68,7 @@ div#bgimg{
   height: 578px;
   position: absolute;
   top: -20px;
-  left: 100px; /* (container.width - bgimg.width)/2 */
+  left: 75px; /* (container.width - bgimg.width)/2 */
   z-index: 1;
   background-image: url(./image/rouka_1.png);
   background-size: contain;
@@ -80,8 +86,8 @@ div#bgimg{
 .content h2{
 }
 .content:not(#top){
-  padding: 80px 200px;
-  height: 645px; /* .content#topの全体の高さ */
+  padding: 80px 0 0 200px;
+  height: 645px;
 }
 .content:not(#top) .text{
   text-align: left;
@@ -95,14 +101,14 @@ div#bgimg{
   margin: 0 0 30px 0;
 }
 .content .text.body{
-  height: 300px;
+  height: 420px;
 }
 .text{
   color: white;
   text-align: center;
   font-size: 18pt;
 }
-#story, #cast, #theaters{
+#story, #cast{
   display: none;
 }
 #story .text.title{
@@ -111,17 +117,11 @@ div#bgimg{
 #cast .text.title{
   background-image: url(./image/cast_title.png);
 }
-#theaters .text.title{
-  background-image: url(./image/theaters_title.png);
-}
 #story .text.body{
   background-image: url(./image/story_body.png);
 }
 #cast .text.body{
   background-image: url(./image/cast_body.png);
-}
-#theaters .text.body{
-  background-image: url(./image/theaters_body.png);
 }
 #copy{
   background-image: url(./image/copy.png);
@@ -140,16 +140,6 @@ div#bgimg{
   margin: 20px 0;
   font-size: 20pt;
   text-shadow: 2px 4px 1px red;
-}
-#link{
-  color: red;
-  text-indent: 0;
-  position: absolute;
-  top: 206px;
-  left: 302px;
-}
-#link a:visited{
-  color: red;
 }
 #sns{
   text-align: center;
