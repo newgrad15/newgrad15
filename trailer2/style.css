@@ -54,23 +54,53 @@ div#bgimg{
   /*margin: 0 auto;*/
   position: absolute;
   z-index: 1;
+  background-image: url(./image/rouka_1.png);
+  background-size: contain;
 }
-div#bgimg img{
+/*div#bgimg img{
   display: none;
   width: 700px;
   height: 506px;
-  /*position: absolute;*/
-}
+}*/
 #contents{
-  /*position: absolute;*/
-  /*top: 0;*/
-  z-index: 2;
+  position: relative;
 }
 .content{
-  /*position: absolute;*/
+  position: relative;
+  z-index: 100;
+  /*width: 600px;*/
+}
+.content#top{
+  top: 500px;
+}
+.content h2{
+  /*font-size: 18pt;*/
+}
+.content:not(#top){
+  margin: 50px 200px;
+}
+.content:not(#top) .text{
+  text-align: left;
+  color: red;
+  text-indent: -9999px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+.content p, .content dl{
+  /*font-size: 9pt;*/
 }
 #story, #cast, #theaters{
   display: none;
+}
+#story .text{
+  background-image: url(./image/content_story.png);
+}
+#cast .text{
+  background-image: url(./image/content_cast.png);
+}
+#theaters .text{
+  background-image: url(./image/content_theaters.png);
 }
 #copy{
   background-image: url(./image/copy.png);
