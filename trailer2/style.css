@@ -5,22 +5,23 @@
   padding: 0;
 }
 body{
-  /*background-image: url(./image/background.png);*/
   background-color: black;
-  /*font-family: "ヒラギノ明朝 Pro",  "メイリオ", Arial, sans-serif;*/
   font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
 }
 #container{
-  /*width: 1068px;*/
+  width: 1000px;
   margin: 0 auto;
   position: relative;
-  /*text-align: center;*/
   display: none;
 }
-header ul{
+header{
   margin: 40px 0 0 0;
+  z-index: 10;
+}
+header ul{
+  margin: 0 auto;
   text-align: center;
-  /*width: 860px;*/
+  width: 860px;
 }
 header li{
   text-indent: -9999px;
@@ -46,38 +47,39 @@ header li.theaters{
 }
 header #sound{
   cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: -10px;
+  background-image: url(./image/sound_on.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
 }
 div#bgimg{
-  width: 700px;
-  height: 506px;
-  /*box-shadow: 0 0 300px 100px white inset;*/
-  /*margin: 0 auto;*/
+  width: 800px;
+  height: 578px;
   position: absolute;
+  top: 0;
+  left: 100px; /* (container.width - bgimg.width)/2 */
   z-index: 1;
   background-image: url(./image/rouka_1.png);
   background-size: contain;
 }
-/*div#bgimg img{
-  display: none;
-  width: 700px;
-  height: 506px;
-}*/
 #contents{
   position: relative;
 }
 .content{
   position: relative;
   z-index: 100;
-  /*width: 600px;*/
 }
 .content#top{
   top: 500px;
 }
 .content h2{
-  /*font-size: 18pt;*/
 }
 .content:not(#top){
-  margin: 50px 200px;
+  padding: 80px 200px;
 }
 .content:not(#top) .text{
   text-align: left;
@@ -85,22 +87,39 @@ div#bgimg{
   text-indent: -9999px;
   background-size: contain;
   background-repeat: no-repeat;
-  height: 500px;
 }
-.content p, .content dl{
-  /*font-size: 9pt;*/
+.content .text.title{
+  height: 30px;
+  margin: 0 0 30px 0;
+}
+.content .text.body{
+  height: 300px;
+}
+.text{
+  color: white;
+  text-align: center;
+  font-size: 18pt;
 }
 #story, #cast, #theaters{
   display: none;
 }
-#story .text{
-  background-image: url(./image/content_story.png);
+#story .text.title{
+  background-image: url(./image/story_title.png);
 }
-#cast .text{
-  background-image: url(./image/content_cast.png);
+#cast .text.title{
+  background-image: url(./image/cast_title.png);
 }
-#theaters .text{
-  background-image: url(./image/content_theaters.png);
+#theaters .text.title{
+  background-image: url(./image/theaters_title.png);
+}
+#story .text.body{
+  background-image: url(./image/story_body.png);
+}
+#cast .text.body{
+  background-image: url(./image/cast_body.png);
+}
+#theaters .text.body{
+  background-image: url(./image/theaters_body.png);
 }
 #copy{
   background-image: url(./image/copy.png);
@@ -113,13 +132,16 @@ div#bgimg{
 #footer_cast{
   font-size: 5pt;
 }
-.text{
-  color: white;
-  /*z-index: 1000;*/
-  text-align: center;
-  font-size: 18pt;
-}
 #time_counter{
-  /*font-family: 'digital_dreamregular', 'digital_dream_fatregular', 'digital_dream_fat_narrowRg', 'digital_dream_fat_skewregular', 'digital_dream_fat_skew_narrRg', 'digital_dream_narrowregular', 'digital_dream_skewregular', 'digital_dream_skew_narrowRg', 'radiolandregular', 'radioland_slimregular', "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;*/
   margin: 20px 0;
+}
+#link{
+  color: red;
+  text-indent: 0;
+  position: absolute;
+  top: 206px;
+  left: 302px;
+}
+#link a:visited{
+  color: red;
 }

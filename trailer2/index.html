@@ -11,20 +11,15 @@
   <script>
     $(function(){
       pageOnLoad();
-      resize();
       
       $("li.top").click(function(){ navigation(this); });
       $("li.story").click(function(){ navigation(this); });
       $("li.cast").click(function(){ navigation(this); });
       $("li.theaters").click(function(){ navigation(this); });
     });
-    $(window).on('resize', function(){
-      resize();
-    });
     function navigation(obj){
         item = $( "div.content#"+$(obj).attr("class") );
-        // console.log( );
-      $("#contents div.content").fadeOut(2000, function(){
+      $("#contents div.content").fadeOut(1000, function(){
         setTimeout(function(){
           $( item ).fadeIn(2000);
         }, 2000);
@@ -35,29 +30,21 @@
       $("#container").fadeIn();
       fadeImage();
     }
-    var fadeTime=2000,
-        fadeSpan=5000,
+    var fadeTime=800,
+        fadeSpan=10000,
         n=0;
     function fadeImage(){
-      // img = $("#bgimg img");
-      // len = $(img).length;
-      len = 2;
+      var len = 2;
       
-      // $(img).eq(n).fadeIn(fadeTime);
-      // $(img).not(":eq("+n+")").fadeOut(fadeTime);
-      
-      if(n < len){ n++; }
-      else{ n=0; }
+      // console.log(n);
+      if(n >= len){ n=0; }
       
       $("#bgimg").animate({'opacity' : '0'}, fadeTime, function(){
         $(this).css("background-image","url(./image/rouka_"+(n+1)+".png)").animate({'opacity' : '1'}, fadeTime);
+        n++;
       });
       
       setTimeout(fadeImage, fadeSpan);
-    }
-    function resize(){
-      var winW = $(window).width();
-      $("#bgimg").css('left', (winW-700)/2 + 'px');
     }
   </script>
 </head>
@@ -74,10 +61,6 @@
       <div id="sound"></div>
     </header>
     <div id="contents">
-      <div id="bgimg">
-        <!-- <img src="./image/rouka_1.png" /> -->
-        <!-- <img src="./image/rouka_2.png" /> -->
-      </div>
       <div id="top" class="content">
         <p id="copy" class="text">すべての真相は、4月17日に・・・</p>
         <div id="time_counter" class="text"></div>
@@ -87,8 +70,8 @@
         </p>
       </div>
       <div id="story" class="content">
-        <!-- <h2 class="text">ストーリー</h2> -->
-        <p class="text">
+        <h2 class="text title">ストーリー</h2>
+        <p class="text body">
           カヤック15年新卒20名はカヤックに入社する以前、
           20名で会社を立ち上げ、経営をしていた。
           順調に経営をしていた20名であったが、
@@ -100,8 +83,8 @@
         </p>
       </div>
       <div id="cast" class="content">
-        <!-- <h2 class="text">キャスト</h2> -->
-        <dl class="text">
+        <h2 class="text title">キャスト</h2>
+        <dl class="text body">
           <dt>当日ディレクター：</dt><dd>高橋、高須、橋本、鈴木(寛)</dd>
           <dt>WEBディレクター：</dt><dd>徳田、丹羽</dd>
           <dt>WEBエンジニア：</dt><dd>藤井、元木、小坂、宮原、下田、荒井、長島</dd>
@@ -110,15 +93,17 @@
         </dl>
       </div>
       <div id="theaters" class="content">
-        <!-- <h2 class="text">シアター</h2> -->
-        <dl class="text">
+        <h2 class="text title">シアター</h2>
+        <dl class="text body">
           <dt>会場：</dt><dd>かずさアーク</dd>
           <dt>日にち：</dt><dd>4月17日(金)</dd>
           <dt>詳細：</dt><dd>http://sites.google.com/a/kayac.com/201504ginfo/basu-zhu-che-chang-qing_bao</dd>
         </dl>
+        <p id="link"><a href="https://sites.google.com/a/kayac.com/201504ginfo/" target="_blank">https://sites.google.com/a/kayac.com/201504ginfo/</a></p>
       </div>
+      <div id="bgimg"></div>
     </div>
-    <div id="sns"></div>
+    <!-- <div id="sns"></div> -->
   </div>
 </body>
 </html>
