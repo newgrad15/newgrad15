@@ -38,8 +38,8 @@ function navigation(obj){
   });
 }
 function pageOnLoad(){
-  $("#opening").fadeOut();
-  $("#container").fadeIn();
+  $("#opening").fadeOut(2000);
+  $("#container").fadeIn(3000);
   bgmSound = new BgmSound( "audio" );
   fadeImage();
 }

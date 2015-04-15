@@ -73,7 +73,7 @@ OpeningAnimation = function( id, callBack ){
 	if( endLoopCheck() ){
 	    return that.EndProcess()
 	}
-	setTimeout( function(){ that.Loop() }, 100 );
+	setTimeout( function(){ that.Loop() }, 170 );
     }
 
     this.DrawImage = function(){
@@ -87,9 +87,10 @@ OpeningAnimation = function( id, callBack ){
 	    img = $("#" + that.id + " img");
 	    var target = $(img).eq( that.imagePos);
 	    console.log(target)
-	    target.css("display","block");
+//	    target.css("display","block");
 	    target.css("left","" + that.draw_x + "px");
 	    target.css("top","" + that.draw_y + "px");
+	    target.fadeIn(1000);
 	    that.draw_y += that.fontSize;
 	    that.imagePos+=1
 	}
@@ -108,7 +109,7 @@ OpeningAnimation = function( id, callBack ){
     
     this.EndProcess = function(){
 	var that = this
-	setTimeout( function(){ that.callBack() }, 1000 );	
+	setTimeout( function(){ that.callBack() }, 3000 );
     }
     
     this.Reset( id, callBack )
