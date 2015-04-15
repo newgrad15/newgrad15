@@ -1,30 +1,28 @@
 OpeningAnimation = function( id, callBack ){
     this.Reset = function( id, callBack ){
 	this.element = document.getElementById( id );
-	this.element = document.getElementById( "opening_animation")
 	this.xCharNum = 20 + 2;
 	this.yCharNum = 16 + 2;
 	this.stringImageNum = 74;
-
 	this.loadImageStartNum = 0;
 	this.loadImageEndNum = 0;
-	
-	this.imagePos = 0
+	this.id = id;
+	this.callBack = callBack;	
+	this.imagePos = 0;
 	this.string  = "\nカヤックX年新卒X名は・・・\n\n"
 	this.string += "数年前このX名で起業をし、\n\n"
 	this.string += "会社経営をしていた\n\n"
-	this.string += "\n\n"
-	this.string += "しかし______\n\n"
+	this.string += "_____\n\n"
+	this.string += "しかし\n\n"
 	this.string += "社内である事件が起こり\n\n"
 	this.string += "倒産することに\n\n"
-	this.string += "\n\n"	
+	this.string += "___\n\n"	
 	this.string += "彼らの身に\n\n"
 	this.string += "いったい何がおきたのか・・・\n"
-	this.string += "\n\n"
-	this.stringPos = 0
+	this.string += "_____\n\n"
+	this.stringPos = 0;
 	this.OnResize();
-	this.callBack = callBack
-	return this.Loop( 0, 0 )	
+	this.Loop( 0, 0 )
     }
     this.GetFontSize = function(){
 	x_fontSize = Math.floor( ( this.width ) / ( this.xCharNum ) );
@@ -48,17 +46,11 @@ OpeningAnimation = function( id, callBack ){
 	this.fontSize = this.GetFontSize();
 	this.draw_x = this.GetInitDrawX();
 	this.draw_y = this.GetInitDrawY();
-	console.log( this.element )
 	for( i = 0; i < this.stringImageNum; i++ ){
-
-	    img = $("#main img");
-	    len = $(img).length;
-	    $(img).eq(n).fadeIn(fadeTime);
-	    
-	    var target = this.element.childNodes[ i ]
-	    console.log( this.element.childNodes[ i ] )
-	    target.style.width = "" + this.fontSize + "px";
-	    target.style.height = "" + this.fontSize + "px";	    
+	    img = $("#" + this.id + " img");
+	    target = $(img).eq(i);
+	    target.css( "width","" + this.fontSize + "px");
+	    target.css( "height","" + this.fontSize + "px");
 	}
 	this.ClearCanvas()
     }
@@ -92,11 +84,14 @@ OpeningAnimation = function( id, callBack ){
 	    that.draw_y = that.GetInitDrawY();
 	}
 	var drawImage = function(){
-	    var target = that.element.childNodes[ that.imagePos ]
-	    target.style.display = "block";
-	    target.style.left = "" + that.draw_x + "px";
-	    target.style.top = "" + that.draw_y + "px";
+	    img = $("#" + that.id + " img");
+	    var target = $(img).eq( that.imagePos);
+	    console.log(target)
+	    target.css("display","block");
+	    target.css("left","" + that.draw_x + "px");
+	    target.css("top","" + that.draw_y + "px");
 	    that.draw_y += that.fontSize;
+	    that.imagePos+=1
 	}
 
 	var ch = ""
@@ -108,7 +103,6 @@ OpeningAnimation = function( id, callBack ){
 	}
 	if( ch != "\n" && ch != "_" ){
 	    drawImage()
-	    this.imagePos++
 	}
     }
     
