@@ -1,26 +1,30 @@
-OpeningAnimation = function( id ){
-    this.Reset = function( id ){
+OpeningAnimation = function( id, callBack ){
+    this.Reset = function( id, callBack ){
 	this.element = document.getElementById( id );
 	this.ctx = this.element.getContext( '2d' );
-	this.xCharNum = 16 + 2;
+	this.xCharNum = 17 + 2;
 	this.yCharNum = 16 + 2;
-	this.stringImageNum = 75;
+	this.stringImageNum = 74;
 
 	this.loadImageStartNum = 0;
 	this.loadImageEndNum = 0;
 	
 	this.imagePos = 0
-	this.string  = "\nカヤック１年新卒２名は・・・\n\n"
-	this.string += "数年前この２名で起業をし、\n\n"
+	this.string  = "\nカヤックX年新卒X名は・・・\n\n"
+	this.string += "数年前このX名で起業をし、\n\n"
 	this.string += "会社経営をしていた\n\n"
 	this.string += "\n\n"
-	this.string += "だが、社内である事件が起こり\n\n"
-	this.string += "会社を倒産させてしまった\n\n"
-	this.string += "\n\n\n"
-	this.string += "そこで、何がおきたのか・・・　　　　　　　　　　\n"
+	this.string += "しかし\n\n"
+	this.string += "社内である事件が起こり\n\n"
+	this.string += "倒産することに\n\n"
+	this.string += "\n\n"	
+	this.string += "彼らの身に\n\n"
+	this.string += "いったい何がおきたのか・・・\n"
+	this.string += "\n\n"
 	this.stringPos = 0
 	this.imageAry = []
 	this.LoadImage()
+	this.callBack = callBack
     }
     this.GetFontSize = function(){
 	x_fontSize = Math.floor( ( this.element.height ) / ( this.xCharNum ) );
@@ -45,37 +49,15 @@ OpeningAnimation = function( id ){
 	this.draw_x = this.GetInitDrawX();
 	this.draw_y = this.GetInitDrawY();
 	this.ClearCanvas("black");
-
-	this.ReDraw();
     }
-
-    this.ReDraw = function(){
-	
-    }
-    
     this.ClearCanvas = function( color ){
 	this.ctx.fillStyle = color;
-	var w = this.element.width;
-	var h = this.element.height;
-
-	var grad5 = this.ctx.createRadialGradient( w/2, h/2, w/6, w/2, h/2, w/2 );
-	grad5.addColorStop(0,'#000000');
-	grad5.addColorStop(1.0,'#222222');
-
-	this.ctx.beginPath();
-	this.ctx.fillStyle = grad5;
-	this.ctx.fill();
-	this.ctx.fillRect( 0, 0, this.element.width, this.element.height );
-	this.ctx.drawImage( this.backImage, 0, 0, this.element.width, this.element.height );
-
+	this.ctx.clearRect( 0, 0, this.element.width, this.element.height );
 	this.imagePos = 0
-
 	var frame = this.stringPos
 	this.stringPos = 0
-	console.log( frame )	
 	for( i = 0; i < frame; i++ ){
 	    this.DrawImage( i );
-	    console.log("hekkooo")
 	}
     }
     
@@ -128,13 +110,6 @@ OpeningAnimation = function( id ){
 	var loadNum = 0;
 	var that = this
 
-	that.loadImageStartNum += 1;
-	that.backImage = new Image();
-	that.backImage.src = "image/back.png";
-	that.backImage.onload = function(){
-	    that.loadImageEndNum += 1
-	}
-	
 	for( i = 0; i < this.stringImageNum; i++ ){
 	    that.loadImageStartNum += 1
 	    var image = new Image();
@@ -162,11 +137,12 @@ OpeningAnimation = function( id ){
 	    that.OnResize();
 	    return this.Loop( 0, 0 )
 	}
-	setTimeout( function(){ that.LoadImageCheck() }, 200 );	
+	setTimeout( function(){ that.LoadImageCheck() }, 100 );	
     }
     this.EndProcess = function(){
-	console.log("hello world")
+	var that = this
+	setTimeout( function(){ that.callBack() }, 1000 );	
     }
     
-    this.Reset( id )
+    this.Reset( id, callBack )
 }
