@@ -47,6 +47,7 @@ div#main img{
 }
 
 #opening{
+    height:100%;
     background-image:url("./image/back.png");
     background-size:100% 100%;
 }
