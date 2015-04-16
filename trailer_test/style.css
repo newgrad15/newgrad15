@@ -9,12 +9,6 @@ body{
   font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
   height:100%;
 }
-/*@media screen and (max-width: 640px) {
-  #container {
-    max-width: 640px;
-    width: 100%;
-  }
-}*/
 #container{
   width: 950px;
   margin: 0 auto;
@@ -36,6 +30,7 @@ header li{
   width: 100px;
   height: 37px;
   background-size: contain;
+  background-repeat: no-repeat;
   list-style-type: none;
   display: inline-block;
   margin: 0 50px;
@@ -73,6 +68,7 @@ div#bgimg{
   z-index: 1;
   background-image: url(./image/rouka_1.png);
   background-size: contain;
+  background-repeat: no-repeat;
 }
 #contents{
   position: relative;
@@ -83,8 +79,6 @@ div#bgimg{
 }
 .content#top{
   padding-top: 480px;
-}
-.content h2{
 }
 .content:not(#top){
   padding: 80px 0 0 200px;
@@ -127,6 +121,7 @@ div#bgimg{
 #copy{
   background-image: url(./image/copy.png);
   background-size: contain;
+  background-repeat: no-repeat;
   text-indent: -9999px;
   width: 616px;
   height: 40px;
@@ -143,6 +138,7 @@ div#bgimg{
   text-shadow: 2px 4px 1px red;
 }
 #sns{
+  /*display: none;*/
   text-align: center;
   margin-top: 30px;
 }
@@ -160,3 +156,74 @@ div#bgimg{
   background-image: url(image/back.png);
   background-size: 100% 100%;
 }
+
+
+@media screen and (max-width: 640px) {
+  #container {
+    max-width: 640px;
+    min-width: 300px;
+    width: 100%;
+  }
+  header{
+    margin: 20px 0 0 0;
+  }
+  header ul{
+    width: 100%;
+  }
+  header li{
+    width: 60px;
+    height: auto;
+    margin: 0 15px;
+  }
+  header #sound{
+    /*right: 0;*/
+    top: -5px;
+    width: 30px;
+    height: 30px;
+  }
+  div#bgimg{
+    width: 100%;
+    height: 100%;
+    /*top: -20px;*/
+    left: 0;
+  }
+  .content#top{
+    padding: 220px 10px 0;
+  }
+  .content:not(#top){
+    padding: 25px 10px 0;
+    height: 100%;
+  }
+  .content .text.title{
+    height: 20px;
+    /*margin: 0 0 30px 0;*/
+  }
+  .content .text.body{
+    /*height: auto;*/
+  }
+  .text{
+    /*font-size: 18pt;*/
+  }
+  #copy{
+    width: 100%;
+    height: auto;
+  }
+  #footer_cast{
+    font-size: 4pt;
+    /*margin: 10px 0;*/
+    /*text-shadow: 1px 1px 2px #ffb700;*/
+  }
+  #time_counter{
+    margin: 0 0 15px;
+    font-size: 10pt;
+    text-shadow: 1px 2px 1px red;
+  }
+  #sns{
+    /*margin-top: 30px;*/
+  }
+  .fb_iframe_widget {
+    /*top: -6px;*/
+    /*margin-right: 20px;*/
+  }
+}
+
