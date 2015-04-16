@@ -138,7 +138,7 @@ div#bgimg{
   text-shadow: 1px 1px 2px #ffb700;
 }
 #sns{
-  /*display: none;*/
+  display: none;
   text-align: center;
   margin-top: 30px;
 }
@@ -191,7 +191,7 @@ div#bgimg{
     padding: 220px 10px 0;
   }
   .content:not(#top){
-    padding: 25px 10px 0;
+    padding: 25px 30px 0;
     height: 100%;
   }
   .content .text.title{
@@ -200,6 +200,12 @@ div#bgimg{
   }
   .content .text.body{
     /*height: auto;*/
+  }
+  #story .text.body{
+    background-image: url(./image/story_body_sp.png);
+  }
+  #cast .text.body{
+    background-image: url(./image/cast_body_sp.png);
   }
   #copy{
     width: 100%;
