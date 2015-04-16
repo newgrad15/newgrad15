@@ -33,7 +33,8 @@ TimeCounter = function( id, year, month, date, hours, minutes, seconds ){
 	    diffMinutesStr = ("00" + diffMinutes).slice(-2)
 	    diffSecondsStr = ("00" + diffSeconds).slice(-2)
 
-	    that.element.innerHTML = diffDaysStr + "日" + diffHoursStr + "時間" + diffMinutesStr + "分" + diffSecondsStr + "秒";
+	    // that.element.innerHTML = diffDaysStr + "日" + diffHoursStr + "時間" + diffMinutesStr + "分" + diffSecondsStr + "秒";
+	    that.element.innerHTML = diffHoursStr + "時間" + diffMinutesStr + "分" + diffSecondsStr + "秒";
 	}else{
 	    that.element.innerHTML = "00日00時00分00秒";
 	}
