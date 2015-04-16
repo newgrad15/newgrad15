@@ -1,0 +1,162 @@
+*{
+  border: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: black;
+  font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
+  height:100%;
+}
+/*@media screen and (max-width: 640px) {
+  #container {
+    max-width: 640px;
+    width: 100%;
+  }
+}*/
+#container{
+  width: 950px;
+  margin: 0 auto;
+  position: relative;
+  display: none;
+}
+header{
+  margin: 40px 0 0 0;
+  position: relative;
+  z-index: 10;
+}
+header ul{
+  margin: 0 auto;
+  text-align: center;
+  width: 860px;
+}
+header li{
+  text-indent: -9999px;
+  width: 100px;
+  height: 37px;
+  background-size: contain;
+  list-style-type: none;
+  display: inline-block;
+  margin: 0 50px;
+  cursor: pointer;
+}
+header li.top{
+  background-image: url(./image/top.png);
+}
+header li.story{
+  background-image: url(./image/story.png);
+}
+header li.cast{
+  background-image: url(./image/cast.png);
+}
+header li.theaters{
+  background-image: url(./image/theaters.png);
+}
+header #sound{
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: -10px;
+  background-image: url(./image/sound_on.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 60px;
+  height: 60px;
+}
+div#bgimg{
+  width: 800px;
+  height: 578px;
+  position: absolute;
+  top: -20px;
+  left: 75px; /* (container.width - bgimg.width)/2 */
+  z-index: 1;
+  background-image: url(./image/rouka_1.png);
+  background-size: contain;
+}
+#contents{
+  position: relative;
+}
+.content{
+  position: relative;
+  z-index: 100;
+}
+.content#top{
+  padding-top: 480px;
+}
+.content h2{
+}
+.content:not(#top){
+  padding: 80px 0 0 200px;
+  height: 645px;
+}
+.content:not(#top) .text{
+  text-align: left;
+  color: red;
+  text-indent: -9999px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.content .text.title{
+  height: 30px;
+  margin: 0 0 30px 0;
+}
+.content .text.body{
+  height: 420px;
+}
+.text{
+  color: white;
+  text-align: center;
+  font-size: 18pt;
+}
+#story, #cast{
+  display: none;
+}
+#story .text.title{
+  background-image: url(./image/story_title.png);
+}
+#cast .text.title{
+  background-image: url(./image/cast_title.png);
+}
+#story .text.body{
+  background-image: url(./image/story_body.png);
+}
+#cast .text.body{
+  background-image: url(./image/cast_body.png);
+}
+#copy{
+  background-image: url(./image/copy.png);
+  background-size: contain;
+  text-indent: -9999px;
+  width: 616px;
+  height: 40px;
+  margin: 0 auto;
+}
+#footer_cast{
+  font-size: 9pt;
+  margin: 10px 0;
+  text-shadow: 1px 1px 2px #ffb700;
+}
+#time_counter{
+  margin: 20px 0;
+  font-size: 20pt;
+  text-shadow: 2px 4px 1px red;
+}
+#sns{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.fb_iframe_widget {
+  display: inline-block;
+  position: relative;
+  top: -6px;
+  margin-right: 20px;
+}
+
+#opening_animation{
+  height : 100%;
+  width : 100%;
+  background-image: url(image/back.png);
+  background-size: 100% 100%;
+}
