@@ -127,15 +127,15 @@ div#bgimg{
   height: 40px;
   margin: 0 auto;
 }
-#footer_cast{
-  font-size: 9pt;
-  margin: 10px 0;
-  text-shadow: 1px 1px 2px #ffb700;
-}
 #time_counter{
   margin: 20px 0;
   font-size: 20pt;
   text-shadow: 2px 4px 1px red;
+}
+#footer_cast{
+  font-size: 9pt;
+  margin: 10px 0;
+  text-shadow: 1px 1px 2px #ffb700;
 }
 #sns{
   /*display: none;*/
@@ -201,30 +201,25 @@ div#bgimg{
   .content .text.body{
     /*height: auto;*/
   }
-  .text{
-    /*font-size: 18pt;*/
-  }
   #copy{
     width: 100%;
     height: auto;
-  }
-  #footer_cast{
-    font-size: 7pt;
-    /*margin: 10px 0;*/
-    /*text-shadow: 1px 1px 2px #ffb700;*/
   }
   #time_counter{
     margin: 0 0 15px;
     font-size: 10pt;
     text-shadow: 1px 2px 1px red;
   }
+  #footer_cast{
+    font-size: 7pt;
+    /*margin: 10px 0;*/
+    /*text-shadow: 1px 1px 2px #ffb700;*/
+  }
   #sns{
-    /*margin-top: 30px;*/
+    margin-top: 20px;
   }
   .fb_iframe_widget {
-    /*top: -6px;*/
-    /*margin-right: 20px;*/
-    margin: 0 20px;
+    margin: 0 20px 0 30px;
   }
 }
 
