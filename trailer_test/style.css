@@ -191,7 +191,7 @@ div#bgimg{
     padding: 220px 10px 0;
   }
   .content:not(#top){
-    padding: 25px 30px 0;
+    padding: 25px 30px 30px;
     height: 100%;
   }
   .content .text.title{
@@ -199,7 +199,7 @@ div#bgimg{
     /*margin: 0 0 30px 0;*/
   }
   .content .text.body{
-    /*height: auto;*/
+    height: 470px;
   }
   #story .text.body{
     background-image: url(./image/story_body_sp.png);
