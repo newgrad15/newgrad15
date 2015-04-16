@@ -161,8 +161,8 @@ div#bgimg{
 @media screen and (max-width: 640px) {
   #container {
     max-width: 640px;
-    min-width: 300px;
-    width: 100%;
+    min-width: 320px;
+    width: 320px;
   }
   header{
     margin: 20px 0 0 0;
