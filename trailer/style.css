@@ -4,9 +4,15 @@
   margin: 0;
   padding: 0;
 }
+html{
+    
+  heigth:100%;
+}
+
 body{
   background-color: black;
   font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
+  height:100%;
 }
 #container{
   width: 1000px;
@@ -161,4 +167,11 @@ div#bgimg{
   position: relative;
   top: -6px;
   margin-right: 20px;
+}
+
+#opening{
+  height: 100%;
+  width:100%;
+  background-image: url(./image/back.png);
+  background-size: 100% 100%;
 }

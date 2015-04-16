@@ -86,8 +86,6 @@ OpeningAnimation = function( id, callBack ){
 	var drawImage = function(){
 	    img = $("#" + that.id + " img");
 	    var target = $(img).eq( that.imagePos);
-	    console.log(target)
-//	    target.css("display","block");
 	    target.css("left","" + that.draw_x + "px");
 	    target.css("top","" + that.draw_y + "px");
 	    target.fadeIn(1000);
