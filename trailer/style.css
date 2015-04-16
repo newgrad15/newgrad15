@@ -14,12 +14,12 @@ body{
   font-family: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN","Times New Roman", "游明朝", YuMincho,  "メイリオ", Meiryo, serif;
   height:100%;
 }
-@media screen and (max-width: 640px) {
+/*@media screen and (max-width: 640px) {
   #container {
     max-width: 640px;
     width: 100%;
   }
-}
+}*/
 #container{
   width: 950px;
   margin: 0 auto;
