@@ -209,7 +209,7 @@ div#bgimg{
     height: auto;
   }
   #footer_cast{
-    font-size: 4pt;
+    font-size: 7pt;
     /*margin: 10px 0;*/
     /*text-shadow: 1px 1px 2px #ffb700;*/
   }
@@ -224,6 +224,7 @@ div#bgimg{
   .fb_iframe_widget {
     /*top: -6px;*/
     /*margin-right: 20px;*/
+    margin: 0 20px;
   }
 }
 
